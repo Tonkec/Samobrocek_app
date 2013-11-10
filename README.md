@@ -1,14 +1,14 @@
-## About project
+## Zucko *(Little Yellow Fellow)*
 
-###### This app will help Samoborcek's passengers to find faster and quicker schedule for the bus route the wanted
+###### Rapidly find your next bus drive from Samobor to Zagreb!
+
+The default page for the bus schedule in Samobor is stuck in the past. 
+Let's bring the future to it!
+
+### Features
 
 * Shows when did last bus leave
-
-* By default app tells you when will the next bus arrive
-
-* Click button "I wanna go to Samobor" shows next bus for Samobor 
-
-* Informs whether it is going straight to chosen city with only few bus stops or is it taking a long way with many bus stops
-
-* Gives an option for fast route or slow route
-
+* Tells you when the next bus arrives
+* Gives an option to easily switch destination from Zagreb to Samobor
+* Informs wether the drive is direct or not
+* Gives an option for filtering fast or slow routes
