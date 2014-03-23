@@ -1,20 +1,4 @@
 class Chunk
-  def self.populate_database(departures, opts)
-    departures.each do |key, times|
-      times.each do |time|
-        next unless time =~ /\d/
-        Departure.create(
-          time: Time.parse(time),
-          line_id: opts[:line].id,
-          direction_id: opts[:direction].id,
-          route_type_id: RouteType.send(key).id,
-          day_type: opts[:day_type].id,
-          starred: (time =~ /\*/) != nil
-        )
-      end
-    end
-  end
-
   def self.fetch(opts)
     validate! opts
 
@@ -34,10 +18,26 @@ class Chunk
 
   private
 
-  def self.validate!(opts)
-    return if opts[:position] && opts[:line] &&
-      opts[:direction]
+    def self.validate!(opts)
+      return if opts[:position] && opts[:line] &&
+        opts[:direction]
 
-    raise ArgumentError
-  end
+      raise ArgumentError
+    end
+
+    def self.populate_database(departures, opts)
+      departures.each do |key, times|
+        times.each do |time|
+          next unless time =~ /\d/
+          Departure.create(
+            time: Time.parse(time),
+            line_id: opts[:line].id,
+            direction_id: opts[:direction].id,
+            route_type_id: RouteType.send(key).id,
+            day_type: opts[:day_type].id,
+            starred: (time =~ /\*/) != nil
+          )
+        end
+      end
+    end
 end
