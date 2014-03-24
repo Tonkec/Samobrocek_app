@@ -19,8 +19,10 @@ class BusFinder
   def execute
     {
       :last   => 0..Time.now.seconds_since_midnight,
-      :first  => Time.now.seconds_since_midnight..3600*24,
-      :second => Time.now.seconds_since_midnight..3600*24
+      :first  => 1.minute.from_now.
+      seconds_since_midnight..3600*24,
+      :second => 1.minute.from_now.
+      seconds_since_midnight..3600*24
     }.map do |position, range|
 
       Departure.asc(:time).where(

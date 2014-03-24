@@ -50,4 +50,75 @@ describe "bus finder" do
       end
     end
   end
+
+  describe "when direction is samobor" do
+    describe "and it is Monday, 24-3-2014" do
+      describe "and the time is 18:00" do
+        it "returns 3 buses" do
+          with_time_set_to "18:00 24-3-2014" do
+            BusFinder.
+              execute(direction: Direction.samobor).
+              count.must_equal 3
+          end
+        end
+
+        it "and the first bus is departing in 18:00" do
+          with_time_set_to "18:00 24-3-2014" do
+            BusFinder.
+              execute(direction: Direction.samobor).
+              first.time.strftime("%H:%M").
+              must_equal "18:00"
+          end
+        end
+
+        it "and the second bus is departing in 18:25" do
+          with_time_set_to "18:00 24-3-2014" do
+            BusFinder.
+              execute(direction: Direction.samobor).
+              second.time.strftime("%H:%M").
+              must_equal "18:25"
+          end
+        end
+
+        it "and the last bus is departing in 18:50" do
+          with_time_set_to "18:00 24-3-2014" do
+            BusFinder.
+              execute(direction: Direction.samobor).
+              last.time.strftime("%H:%M").
+              must_equal "18:50"
+          end
+        end
+      end
+
+      describe "and the time is 17:59" do
+        # edge cases yo
+        it "and the first bus is departing in 17:40" do
+          with_time_set_to "17:59 24-3-2014" do
+            BusFinder.
+              execute(direction: Direction.samobor).
+              first.time.strftime("%H:%M").
+              must_equal "17:40"
+          end
+        end
+
+        it "and the second bus is departing in 18:00" do
+          with_time_set_to "17:59 24-3-2014" do
+            BusFinder.
+              execute(direction: Direction.samobor).
+              second.time.strftime("%H:%M").
+              must_equal "18:00"
+          end
+        end
+
+        it "and the last bus is departing in 18:25" do
+          with_time_set_to "17:59 24-3-2014" do
+            BusFinder.
+              execute(direction: Direction.samobor).
+              last.time.strftime("%H:%M").
+              must_equal "18:25"
+          end
+        end
+      end
+    end
+  end
 end
