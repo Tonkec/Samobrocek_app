@@ -1,12 +1,24 @@
 class Page
-  def initialize(url)
-    if url
-      puts "Fetching data..."
-      @content = Nokogiri::HTML(open(url))
-      puts "Success!"
+  attr_reader :schema
 
-      @xpath = @content.xpath("//tbody//p")
-    end
+  def initialize(opts)
+    @url = opts[:url] ||
+      raise(ArgumentError.new("can't find
+        :url in the arguments"))
+
+    @schema = opts[:schema] ||
+      raise(ArgumentError.new("can't find
+        :schema in the arguments"))
+
+    fetch_page
+  end
+
+  def fetch_page
+    puts "Fetching data..."
+    @content = Nokogiri::HTML(open(@url))
+    puts "Success!"
+
+    @xpath = @content.xpath("//tbody//p")
   end
 
   def get_chunk(position)

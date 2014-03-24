@@ -13,7 +13,7 @@ require "./page"
 require "./chunk"
 require "./data_importer"
 
-page_schema = {
+schema = {
   :line_name => 3,
   :day_types => [5, 21, 36],
   :directions => [6, 13],
@@ -24,11 +24,14 @@ page_schema = {
     :nedjelja => 38 
   }
 }
-URL = "http://www.samoborcek.hr/linija.php?id=18" 
 
-page = Page.new(URL)
+page = Page.new(
+  :url => "http://www.samoborcek.hr/linija.php?id=18",
+  :schema => schema
+)
+
 importer = DataImporter.new(
-  :page_schema => page_schema,
   :page => page
 )
+
 importer.import_all
