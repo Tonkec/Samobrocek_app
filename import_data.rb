@@ -11,6 +11,7 @@ require "./models/route_type"
 
 require "./lib/page"
 require "./lib/chunk"
+require "./lib/database"
 require "./lib/data_importer"
 
 class ImportData

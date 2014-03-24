@@ -4,8 +4,7 @@ class DataImporter
       raise(ArgumentError.new("can't find :page in
                               the arguments"))
 
-    load_mongoid
-    drop_database
+    Database.prepare!
   end
 
   def import_all
@@ -25,18 +24,6 @@ class DataImporter
   end
 
   private
-
-    def load_mongoid
-      Mongoid.load!("mongoid.yml", :development)
-    end
-
-    def drop_database
-      Line.destroy_all
-      DayType.destroy_all
-      Direction.destroy_all
-      Departure.destroy_all
-      RouteType.destroy_all
-    end
 
     def import_chunk_pairs(position, line, day_type, page)
       [[position, Direction.zagreb],
