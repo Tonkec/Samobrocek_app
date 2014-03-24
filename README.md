@@ -1,5 +1,7 @@
 ## Zucko *(Little Yellow Fellow)*
 
+[![Code Climate](https://codeclimate.com/github/Tonkec/Zucko.png)](https://codeclimate.com/github/Tonkec/Zucko)
+
 ###### Rapidly find your next bus drive from Samobor to Zagreb!
 
 The [default page for the bus schedule in Samobor](http://samoborcek.hr/linija.php?id=18) is stuck in the past. 
