@@ -4,7 +4,7 @@ class DataImporter
       raise(ArgumentError.new("can't find :page in
                               the arguments"))
 
-    Database.prepare!
+    Database.drop!
   end
 
   def import_all

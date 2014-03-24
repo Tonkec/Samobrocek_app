@@ -18,4 +18,15 @@ class DayType
   def self.nedjelja
     where(title: "nedjelja i blagdani").first
   end
+
+  def self.now
+    case Time.now.wday
+    when 1..5
+      radni
+    when 6
+      subota
+    when 0
+      nedjelja
+    end
+  end
 end

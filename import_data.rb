@@ -3,16 +3,13 @@ require 'open-uri'
 require 'nokogiri'
 require "pry"
 
-require "./models/day_type"
-require "./models/line"
-require "./models/direction"
-require "./models/departure"
-require "./models/route_type"
-
 require "./lib/page"
 require "./lib/chunk"
 require "./lib/database"
 require "./lib/data_importer"
+
+Database.load
+Database.drop!
 
 class ImportData
   def self.execute

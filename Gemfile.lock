@@ -35,6 +35,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport
   minitest
   mongoid
   nokogiri

@@ -30,7 +30,7 @@ class Chunk
         times.each do |time|
           next unless time =~ /\d/
           Departure.create(
-            time: Time.parse(time),
+            time: Time.parse(time).seconds_since_midnight,
             line_id: opts[:line].id,
             direction_id: opts[:direction].id,
             route_type_id: RouteType.send(key).id,
