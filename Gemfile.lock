@@ -12,6 +12,7 @@ GEM
     i18n (0.6.9)
     method_source (0.8.2)
     mini_portile (0.5.2)
+    minitest (5.3.0)
     mongoid (3.1.6)
       activemodel (~> 3.2)
       moped (~> 1.4)
@@ -33,6 +34,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  minitest
   mongoid
   nokogiri
   pry

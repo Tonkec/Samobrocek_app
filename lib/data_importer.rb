@@ -20,6 +20,8 @@ class DataImporter
                          DayType.send(day_type),
                          @page)
     end
+
+    true
   end
 
   private
