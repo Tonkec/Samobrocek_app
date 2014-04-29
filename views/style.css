@@ -1,0 +1,31 @@
+body {
+   background-color: #ADD8E6;
+}
+.img-circle {
+  height: 70px;
+  width: 70px; 
+}
+
+.img-col {
+  padding-bottom: 20px;
+}
+.col-md-6 {
+  text-align: center;
+}
+
+
+nav {
+  width: 350px;
+}
+
+.navbar-collapse {
+  background-color:#3090C7;
+}
+
+
+li>a {
+  font-size: 15px;
+}
+span {
+  color: white;
+}

@@ -4,27 +4,22 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Zucko</title>
-    <!-- my css -->
-    <link rel="stylesheet" href="style.css" type="text/css"/>
 
-    <!-- Bootstrap arrows-->
-    <link href='css/bootstrap-arrows.css' data-angle='stylesheet' type='text/css' />
-    
+    <title>Zucko</title>
+
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-   
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-	
-	<!-- Font Awesome -->
-	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  
+    <!-- Font Awesome -->
+  
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,79 +27,138 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>   
     <![endif]-->
-	
-	<style type="text/css">
-
-html {margin: 0 auto;}
-	 
+    <style type="text/css">
 body {
-	     text-align:center;
-		 font-size: 100%;
-		 width: 960px; 
-		 margin: 0 auto; 
-		 background-color: 
-	   }
-	 
-	   img {
-	     height: 20em;
-		 width: 20em;
-		 border: 1px solid;
-		 border-radius: 10px
-		
-	   }
-	   
-	   #zagreb {
-	     margin-left: 350px
-	   }
-	 
-	   div {
-	     display: block
-	   }
+   background-color: #ADD8E6;
+}
 
-	   .page-header {
-	     align: center
-	   }
-	   
-	   .img_container {
-	     background-color: none;
-		 padding-left: 50px;
-		 padding-right: 50px;
-		 padding-top: 0px;
-		 padding-bottom: 0px;
-		 margin-bottom: 50px;
-	   
-	   } 
-	</style>
+.img-circle {
+  height: 70px;
+  width: 70px; 
+}
+
+.img-col {
+  padding-bottom: 100px;
+  text-align: center;
+}
+
+.img-container {
+	padding-top: 50px;
+}
+
+.nav-col {
+	padding-left: 170px;
+}
+nav {
+  width: 350px;
+}
+
+.navbar {
+  border: none;
+  box-shadow: none;
+}
+
+.navbar-collapse {
+  background-color:#3090C7;
+}
+
+.navbar-header {
+	background-color:#3090C7;
+}
+
+.navbar-toggle {
+	background-color: white;
+}
+
+header {
+  background-color: #3090C7;
+}
+
+li>a {
+  font-size: 15px;
+}
+
+span {
+  color: white;
+}
+  </style>
   </head>
   <body>
-    <div class="page-header">
-      <h1 align="center">Zucko  <small>buseki</small></h1>
-    </div>
-  
-    <div class="img_container">
-     <img src="http://i1154.photobucket.com/albums/p522/tonkec/samoborgif_zps9e95d178.gif" class="img-circle" id="samobor">
-     <i class="fa fa-long-arrow-right"></i>
-	 <img src="http://i1154.photobucket.com/albums/p522/tonkec/Zagreb_grb_zpsecf427fe.gif" class="img-circle" id="zagreb">
+  <header class="navbar"> 
+  <div class="container">
+   <nav class="navbar navbar-default" role="navigation">
+ 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><span><b>Zucko</b></span></a>
     </div>
 
-<div class="btn-group btn-group-justified">
-  <div class="btn-group">
-    <button type="button" class="btn btn-default">Prosli busek</button>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#"><span>Prosli</span></a></li>
+        <li><a href="#"><span>Trenutni</span></a></li>
+        <li><a href="#"><span>Sljedeci</span></a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+</nav>
+ </div>
+</header>
+  
+   <div class="img-container container">
+   <div class="col-md-3"></div>
+   <div class="img-col col-md-6">
+     <img src="http://i1154.photobucket.com/albums/p522/tonkec/samoborgif_zps9e95d178.gif" class="img-circle" id="samobor">
+   <i class="icon-long-arrow-right icon-4x"></i>
+   <img src="http://i1154.photobucket.com/albums/p522/tonkec/Zagreb_grb_zpsecf427fe.gif" class="img-circle" id="zagreb">
+    </div>
+   
+    <div class="col-md-3"></div>
+    </div>
+
+<div class="container">
+  <div class="col-md-4 col-xs-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Prosli busek</h3>
+      </div>
+    <div class="panel-body">
+    Otisao prije 10 minuta
+    </div>
+   </div>
   </div>
-  <div class="btn-group">
-    <button type="button" class="btn btn-default">Trenutni busek</button>
+   
+  <div class="col-md-4 col-xs-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Sadasnji busek</h3>
+      </div>
+    <div class="panel-body">
+    Polazi za 10 minuta
+    </div>
+   </div>
   </div>
-  <div class="btn-group">
-    <button type="button" class="btn btn-default">Sljedeci busek</button>
+
+  <div class="col-md-4 col-xs-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Sljedeci busek</h3>
+      </div>
+    <div class="panel-body">
+    Polazi za 20 minuta
+    </div>
+   </div>
   </div>
-</div>
+</div> <!-- container -->
 
  </body>
 
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <script src="js/bootstrap.min.js"></script>
-    <!-- bootstrap js for arrows -->
-      <script type="text/javascript" src="js/bootstrap-arrows.js"></script>
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>﻿
 </html>
