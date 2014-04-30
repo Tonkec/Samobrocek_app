@@ -27,135 +27,119 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>   
     <![endif]-->
-    <style type="text/css">
-body {
-   background-color: #ADD8E6;
-}
-
-.img-circle {
-  height: 70px;
-  width: 70px; 
-}
-
-.img-col {
-  padding-bottom: 100px;
-  text-align: center;
-}
-
-.img-container {
-	padding-top: 50px;
-}
-
-.nav-col {
-	padding-left: 170px;
-}
-nav {
-  width: 350px;
-}
-
-.navbar {
-  border: none;
-  box-shadow: none;
-}
-
-.navbar-collapse {
-  background-color:#3090C7;
-}
-
-.navbar-header {
-	background-color:#3090C7;
-}
-
-.navbar-toggle {
-	background-color: white;
-}
-
-header {
-  background-color: #3090C7;
-}
-
-li>a {
-  font-size: 15px;
-}
-
-span {
-  color: white;
-}
-  </style>
   </head>
+  <style type="text/css">
+    .img-circle {
+      width: 50px;
+      height: 50px;
+    }
+
+
+    .icon-4x {
+      margin-top: 150px;
+    }
+
+    .list-group-item {
+      height: ;
+    }
+
+  </style>
   <body>
-  <header class="navbar"> 
+  <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <a href="#" class="navbar-brand">Zucko</a>
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+        <div class="collapse navbar-collapse navHeaderCollapse"> 
+              <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#">Home</a>
+                <li><a href="#contact" data-toggle="modal">Contact</a>
+              </ul>
+        </div>
+      </div>
+    </div> 
+
+
+     <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+            <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="page-header">
+                <h3> Odaberi smjer</h3>
+              </div>
+              <div class="img-page-body page-body text-center">
+              <div class="col-md-4 col-xs-4">
+                <img class="img-circle pull-right" src="http://i1154.photobucket.com/albums/p522/tonkec/samoborgif_zps9e95d178.gif">
+              </div>
+              <div class="col-md-4 col-xs-4">
+                <i class="icon-long-arrow-right icon-4x"></i>
+              </div>
+              <div class="col-md-4 col-xs-4">
+                <img class="img-circle pull-left" src="http://i1154.photobucket.com/albums/p522/tonkec/Zagreb_grb_zpsecf427fe.gif">
+               </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          
+        <div class="col-lg-3">
+          <div class="list-group">
+          <a href="#" class="list-group-item active">
+            <h4 class="list-group-item-heading">Smjerovi </h4>
+          </a>
+          <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading">Samobor- Zagreb (A.K.) </h4>
+          </a>
+           <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading">Samobor- Ljubljanica </h4>
+          </a>
+           <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading">Samobor- Črnomerec</h4>
+          </a>
+        </div><!--col-lg-3-->
+        </div>
+
+        </div>
+      </div>
+
   <div class="container">
-   <nav class="navbar navbar-default" role="navigation">
- 
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#"><span><b>Zucko</b></span></a>
-    </div>
+    <div class="row">
+      <div class="col-lg-9">
+        
+        <div class="col-md-4">
+          <div class="page-header">
+            <h4>Prosli busek</h4>
+          </div>
+          <div class="page-body">
+            <h5>Otisao prije 10 minuta</h5>
+          </div>
+        </div>
+    
+        <div class="col-md-4">
+          <div class="page-header">
+            <h4>Trenutni busek</h4>
+        </div>
+          <div class="page-body">
+            <h5> Polazi za 10 minuta </h5>
+          </div>
+        </div>
+    
+        <div class="col-md-4">
+          <div class="page-header">
+            <h4>Sljedeci busek</h4>
+          </div>
+          <div class="page-body">
+            <h5>Polazi za 20 minuta</h5>
+          </div>
+        </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a href="#"><span>Prosli</span></a></li>
-        <li><a href="#"><span>Trenutni</span></a></li>
-        <li><a href="#"><span>Sljedeci</span></a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-</nav>
- </div>
-</header>
-  
-   <div class="img-container container">
-   <div class="col-md-3"></div>
-   <div class="img-col col-md-6">
-     <img src="http://i1154.photobucket.com/albums/p522/tonkec/samoborgif_zps9e95d178.gif" class="img-circle" id="samobor">
-   <i class="icon-long-arrow-right icon-4x"></i>
-   <img src="http://i1154.photobucket.com/albums/p522/tonkec/Zagreb_grb_zpsecf427fe.gif" class="img-circle" id="zagreb">
-    </div>
-   
-    <div class="col-md-3"></div>
-    </div>
-
-<div class="container">
-  <div class="col-md-4 col-xs-4">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">Prosli busek</h3>
       </div>
-    <div class="panel-body">
-    Otisao prije 10 minuta
     </div>
-   </div>
   </div>
-   
-  <div class="col-md-4 col-xs-4">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">Sadasnji busek</h3>
-      </div>
-    <div class="panel-body">
-    Polazi za 10 minuta
-    </div>
-   </div>
-  </div>
-
-  <div class="col-md-4 col-xs-4">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">Sljedeci busek</h3>
-      </div>
-    <div class="panel-body">
-    Polazi za 20 minuta
-    </div>
-   </div>
-  </div>
-</div> <!-- container -->
 
  </body>
 
