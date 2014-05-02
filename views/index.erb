@@ -20,6 +20,10 @@
   
   <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!--jquery-->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,8 +31,17 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>   
     <![endif]-->
-  </head>
-  <style type="text/css">
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('.icon-long-arrow-right').click(function(){
+        $(this).replaceWith('<i class="icon-long-arrow-left icon-4x"></i>');
+      });
+    });
+ 
+</script>
+<style type="text/css">
     .img-circle {
       width: 50px;
       height: 50px;
@@ -43,7 +56,14 @@
       height: ;
     }
 
+    .blue {
+      background-color: blue;
+    }
+
+   
+
   </style>
+  </head>  
   <body>
   <div class="navbar navbar-inverse navbar-static-top">
       <div class="container">
@@ -73,13 +93,13 @@
               </div>
               <div class="img-page-body page-body text-center">
               <div class="col-md-4 col-xs-4">
-                <img class="img-circle pull-right" src="http://i1154.photobucket.com/albums/p522/tonkec/samoborgif_zps9e95d178.gif">
+                <img class="img-circle pull-right" id="samobor" src="http://i1154.photobucket.com/albums/p522/tonkec/samoborgif_zps9e95d178.gif">
               </div>
               <div class="col-md-4 col-xs-4">
                 <i class="icon-long-arrow-right icon-4x"></i>
               </div>
               <div class="col-md-4 col-xs-4">
-                <img class="img-circle pull-left" src="http://i1154.photobucket.com/albums/p522/tonkec/Zagreb_grb_zpsecf427fe.gif">
+                <img class="img-circle pull-left" id="zagreb" src="http://i1154.photobucket.com/albums/p522/tonkec/Zagreb_grb_zpsecf427fe.gif">
                </div>
               </div>
             </div>
@@ -145,4 +165,5 @@
 
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>﻿
+
 </html>
