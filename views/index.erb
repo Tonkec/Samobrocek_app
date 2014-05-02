@@ -34,10 +34,11 @@
 
 
 <script type="text/javascript">
-    $(document).ready(function(){
-      $('.icon-long-arrow-right').click(function(){
-        $(this).replaceWith('<i class="icon-long-arrow-left icon-4x"></i>');
-      });
+   $(document).ready(function(){
+      $( "i" ).click(function() {
+		$( "i" ).toggle();
+		$('.direction').toggle();
+		});
     });
  
 </script>
@@ -52,15 +53,6 @@
       margin-top: 150px;
     }
 
-    .list-group-item {
-      height: ;
-    }
-
-    .blue {
-      background-color: blue;
-    }
-
-   
 
   </style>
   </head>  
@@ -87,24 +79,28 @@
       <div class="row">
         <div class="col-lg-9">
             <div class="panel panel-default">
-            <div class="panel-body">
-              <div class="page-header">
+            <div class="panel-body text-center">
                 <h3> Odaberi smjer</h3>
-              </div>
-              <div class="img-page-body page-body text-center">
+                <h5 class="direction"> Samobor- Zagreb </h5>
+                <h5 class="direction" style="display: none"> Zagreb- Samobor</h5>
+                
               <div class="col-md-4 col-xs-4">
                 <img class="img-circle pull-right" id="samobor" src="http://i1154.photobucket.com/albums/p522/tonkec/samoborgif_zps9e95d178.gif">
               </div>
-              <div class="col-md-4 col-xs-4">
-                <i class="icon-long-arrow-right icon-4x"></i>
+              
+              <div class="col-md-4 col-xs-4 text-center">
+					<a href="#"><i class="icon-long-arrow-right icon-4x"></i></a>
+					<a href="#"><i class="icon-long-arrow-left icon-4x" style="display: none"></i></a>
               </div>
+              
               <div class="col-md-4 col-xs-4">
                 <img class="img-circle pull-left" id="zagreb" src="http://i1154.photobucket.com/albums/p522/tonkec/Zagreb_grb_zpsecf427fe.gif">
                </div>
-              </div>
-            </div>
+               
+			 </div>
           </div>
           </div>
+          
           
         <div class="col-lg-3">
           <div class="list-group">
