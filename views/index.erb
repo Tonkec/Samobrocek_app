@@ -18,11 +18,11 @@
   
     <!-- Font Awesome -->
   
-  <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-  <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
   
   <!--jquery-->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -36,126 +36,141 @@
 <script type="text/javascript">
    $(document).ready(function(){
       $( "i" ).click(function() {
-		$( "i" ).toggle();
-		$('.direction').toggle();
-		});
+		    $('.direction').toggle();
+        $('.img-circle').toggle();
+		  });
     });
  
 </script>
 <style type="text/css">
-    .img-circle {
+  .img-circle {
       width: 50px;
       height: 50px;
+      border: 4px solid;
+      border-color: #FFBF00;
     }
+    
+	body {
+		background-color: #FFBF00;	
+	}
+    
+  .panel {
+		background-color: #222222;	
+	  padding-top: 70px;
+  }
+	
+		
+  span {
+		color: #FFBF00;
+	}
 
+  .departure {
+    margin-top: 100px;
+  }
 
-    .icon-4x {
-      margin-top: 150px;
-    }
+  img {
+    height: 50px;
+    width: 70px;
+  }
 
+  .btn-default, .btn:hover  {
+   background-color: #222222;
+   background-image: none; 
+   color: #FFBF00;
+   border: none;
+   box-shadow: none;
+  }
 
   </style>
   </head>  
   <body>
+	 
   <div class="navbar navbar-inverse navbar-static-top">
       <div class="container">
-        <a href="#" class="navbar-brand">Zucko</a>
+        <a href="#" class="navbar-brand"><span>Zucko</span></a>
             <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
               <span class="icon-bar"> </span>
               <span class="icon-bar"> </span>
               <span class="icon-bar"> </span>
             </button>
         <div class="collapse navbar-collapse navHeaderCollapse"> 
-              <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">Home</a>
-                <li><a href="#contact" data-toggle="modal">Contact</a>
+              <ul class="nav navbar-nav navbar-left">
+                <li class="active"><a href="#"><span>Home</span></a>
+                <li><a href="#contact" data-toggle="modal"><span>Contact</span></a>
               </ul>
         </div>
       </div>
     </div> 
 
-
      <div class="container">
       <div class="row">
-        <div class="col-lg-9">
-            <div class="panel panel-default">
-            <div class="panel-body text-center">
-                <h3> Odaberi smjer</h3>
-                <h5 class="direction"> Samobor- Zagreb </h5>
-                <h5 class="direction" style="display: none"> Zagreb- Samobor</h5>
-                
-              <div class="col-md-4 col-xs-4">
-                <img class="img-circle pull-right" id="samobor" src="http://i1154.photobucket.com/albums/p522/tonkec/samoborgif_zps9e95d178.gif">
-              </div>
-              
-              <div class="col-md-4 col-xs-4 text-center">
-					<a href="#"><i class="icon-long-arrow-right icon-4x"></i></a>
-					<a href="#"><i class="icon-long-arrow-left icon-4x" style="display: none"></i></a>
-              </div>
-              
-              <div class="col-md-4 col-xs-4">
-                <img class="img-circle pull-left" id="zagreb" src="http://i1154.photobucket.com/albums/p522/tonkec/Zagreb_grb_zpsecf427fe.gif">
-               </div>
-               
-			 </div>
-          </div>
-          </div>
-          
-          
-        <div class="col-lg-3">
-          <div class="list-group">
-          <a href="#" class="list-group-item active">
-            <h4 class="list-group-item-heading">Smjerovi </h4>
-          </a>
-          <a href="#" class="list-group-item">
-            <h4 class="list-group-item-heading">Samobor- Zagreb (A.K.) </h4>
-          </a>
-           <a href="#" class="list-group-item">
-            <h4 class="list-group-item-heading">Samobor- Ljubljanica </h4>
-          </a>
-           <a href="#" class="list-group-item">
-            <h4 class="list-group-item-heading">Samobor- Črnomerec</h4>
-          </a>
-        </div><!--col-lg-3-->
-        </div>
-
-        </div>
-      </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9">
         
-        <div class="col-md-4">
-          <div class="page-header">
-            <h4>Prosli busek</h4>
-          </div>
-          <div class="page-body">
-            <h5>Otisao prije 10 minuta</h5>
-          </div>
-        </div>
-    
-        <div class="col-md-4">
-          <div class="page-header">
-            <h4>Trenutni busek</h4>
-        </div>
-          <div class="page-body">
-            <h5> Polazi za 10 minuta </h5>
-          </div>
-        </div>
-    
-        <div class="col-md-4">
-          <div class="page-header">
-            <h4>Sljedeci busek</h4>
-          </div>
-          <div class="page-body">
-            <h5>Polazi za 20 minuta</h5>
-          </div>
-        </div>
+            <div class="panel">
+		          <div class="panel-heading text-center">
+                <div class="row" >
+                <h1 style="display: inline-block"> 
+                  <span>Odaberi smjer<span> 
+                  <small class="direction text-muted">Samobor - Zagreb </small>
+                  <small class="direction text-muted" style="display: none">  Zagreb - Samobor</small>
+                </h1>
+              </div>
+              </div>
 
-      </div>
-    </div>
-  </div>
+            <div class="panel-body text-center">
+            
+              <div class="container">
+                <div class="col-md-4 col-xs-3">
+                  <img class="img-circle pull-right" id="samobor" src="http://i1154.photobucket.com/albums/p522/tonkec/samoborgif_zps9e95d178.gif">
+                  <img class="img-circle pull-right" id="zagreb" src="http://i1154.photobucket.com/albums/p522/tonkec/Zagreb_grb_zpsecf427fe.gif" style="display: none">
+                </div>
+              
+                <div class="col-md-4 col-arr col-xs-6">
+					       <i class="btn btn-default icon-long-arrow-right icon-4x"></i>
+                </div>
+              
+                <div class="col-md-4 col-xs-3">
+                  <img class="img-circle pull-left" id="zagreb" src="http://i1154.photobucket.com/albums/p522/tonkec/Zagreb_grb_zpsecf427fe.gif">
+                   <img class="img-circle pull-left" id="samobor" src="http://i1154.photobucket.com/albums/p522/tonkec/samoborgif_zps9e95d178.gif" style="display: none">
+                </div>
+              </div><!--container-->
+               
+				        
+                <div class="col-md-4 departure">
+				          <div class="page-header">
+                    <h3><span>Prosli busek</span></h3>
+                  </div>
+				          <div class="panel-body pull-left">
+				            <h4 class="text-muted">Otisao prije 20 minuta</h4>
+				          </div>
+                  <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR0fJ9q8vb8l8CfzmnTEHtpOUcCB-tWtG3A671KP71e2ioH47Fyhh_JcGk">
+			          </div>
+				
+				        <div class="col-md-4 departure">
+                  <div class="page-header">
+                    <h3><span>Trenutni busek</span></h3>
+                  </div>
+                  <div class="panel-body pull-left">
+                    <h4 class="text-muted">Otisao prije 10 minuta</h4>
+                  </div>
+                   <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR0fJ9q8vb8l8CfzmnTEHtpOUcCB-tWtG3A671KP71e2ioH47Fyhh_JcGk">
+                </div>
+				
+				        <div class="col-md-4 departure">
+                  <div class="page-header">
+                    <h3><span>Sljedeci busek</span></h3>
+                  </div>
+                  <div class="panel-body pull-left">
+                    <h4 class="text-muted">Polazi za 10 minuta</h4>
+                  </div>
+                   <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR0fJ9q8vb8l8CfzmnTEHtpOUcCB-tWtG3A671KP71e2ioH47Fyhh_JcGk">
+                </div>
+
+              
+			     </div><!--panel-body-->
+			   </div><!--panel-->
+	
+  </div><!--row-->
+</div><!--container-->
 
  </body>
 
