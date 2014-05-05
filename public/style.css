@@ -1,0 +1,56 @@
+    body {
+	background-color: #222222;
+	background-image: none;	
+	}
+.img-circle {
+      width: 50px;
+      height: 50px;
+      border: 4px solid;
+      border-color: #FFBF00;
+      position: absolute;
+    }
+  
+		
+span {
+	color: #FFBF00;
+	}
+
+.departure {
+    margin-top: 100px;
+  }
+
+.img-flipped {
+    -moz-transform: scaleX(-1);
+   -o-transform: scaleX(-1);
+   -webkit-transform: scaleX(-1);
+   transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+.img-unflipped {
+    -moz-transform: scaleX(1);
+   -o-transform: scaleX(1);
+   -webkit-transform: scaleX(1);
+   transform: scaleX(1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+.img-bus {
+    position: absolute;
+    left: 40px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .img-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+.btn {
+  margin-bottom: 20px;
+}
+
+
