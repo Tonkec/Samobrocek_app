@@ -1,19 +1,37 @@
 body {
-	background-color: #222222;
-	background-image: none;	
+  background-color: #222222;
+  background-image: none; 
+  color: white;
 }
 
 .img-circle {
-  width: 150px;
-  height: 150px;
-  border: 4px solid;
-  border-color: #FFBF00;
-  position: absolute;
-  margin-top: 50px;
+  height: 80px;
+  width: 50px;
+  max-width: 80px;
+  max-height: 50px;
 }
-  		
-span {
-	color: #FFBF00;
+
+.btn-default, .btn, .btn-default:hover {
+  background-image: none;
+  background-color: blue;
+  border: none;
+  box-shadow: none;
+}
+
+.btn-default, .icon-3x {
+  max-width: 60px;  
+  max-height: 50px;
+}
+
+.img-bus {  
+  position: absolute;
+  max-width: 50px;
+  max-height: 30px;
+}
+
+.col-bus {
+  padding-top: 25px;
+  padding-right: 70px;
 }
 
 .img-flipped {
@@ -25,18 +43,6 @@ span {
   -ms-filter: "FlipH";
 }
 
-.img-bus {
-  position: absolute;
-  left: 40px;
-  width: 100px;
-  height: 100px;
-  margin-top: 70px;
-}
-
-.btn {
-  margin-bottom: 20px;
-}
-
-h1 {
-  color: #FFBF00;
+h4 {
+  color:green;
 }
