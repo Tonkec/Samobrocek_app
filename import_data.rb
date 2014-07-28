@@ -33,5 +33,7 @@ class ImportData
     )
 
     importer.execute
+
+    puts "Imported #{Departure.count} departures"
   end
 end
