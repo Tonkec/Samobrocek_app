@@ -13,23 +13,33 @@ class BusFinder
   def initialize(*args)
     opts = args.first || {}
     
-    @direction = opts[:direction] || Direction.zagreb
+    @is_return = !! opts[:is_return]
   end
 
   def execute
-    {
-      :last   => 0..Time.now.seconds_since_midnight,
-      :first  => 1.minute.from_now.
-      seconds_since_midnight..3600*24,
-      :second => 1.minute.from_now.
-      seconds_since_midnight..3600*24
-    }.map do |position, range|
-
-      Departure.asc(:time).where(
-      time: range,
-      day_type: DayType.now,
-      direction: @direction).send(position)
-
-    end
+    departures = find_departures
+    departures.each {|d| puts d.time.strftime("%H:%M")}
   end
+
+  private
+
+    def range_hash
+      {
+        :last   => 0..Time.now.seconds_since_midnight,
+        :first  => 1.minute.from_now.
+                     seconds_since_midnight..3600*24,
+        :second => 1.minute.from_now.
+                     seconds_since_midnight..3600*24
+      }
+    end
+
+    def find_departures
+      range_hash.map do |position, range|
+        Departure.asc(:time).where(
+          time: range,
+          day_type: DayType.now,
+          is_return: @is_return
+        ).send(position)
+      end
+    end
 end
