@@ -24,19 +24,8 @@ end
 
 class ImportData
   def self.execute
-    schema = {
-      :directions => [6, 13],
-      :route_types => [8, 10],
-      :departure_positions => {
-        :radni => 7,
-        :subota => 23,
-        :nedjelja => 38 
-      }
-    }
-
     page = Page.new(
-      :url => "http://www.samoborcek.hr/vozni-red/",
-      :schema => schema
+      :url => "http://www.samoborcek.hr/vozni-red/"
     )
 
     importer = DataImporter.new(

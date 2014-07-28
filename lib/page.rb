@@ -6,10 +6,6 @@ class Page
       raise(ArgumentError.new("can't find
         :url in the arguments"))
 
-    @schema = opts[:schema] ||
-      raise(ArgumentError.new("can't find
-        :schema in the arguments"))
-
     fetch_page
   end
 
