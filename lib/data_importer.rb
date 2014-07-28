@@ -1,4 +1,7 @@
 class DataImporter
+  DAY_TYPES = ["radni dan", "subota", "nedjelja"]
+  SCHEDULES = ["ljetni"]
+
   def initialize(opts)
     @page = opts[:page] ||
       raise(ArgumentError.new("can't find :page in
@@ -8,9 +11,8 @@ class DataImporter
   end
 
   def execute
-    # seasons = %w.ZIMSKI LJETNI..map do |season|
-    seasons = %w.LJETNI..map do |season|
-      @page.css("div.col-1-3:contains('#{season}')")
+    seasons = SCHEDULES.map do |season|
+      @page.css("div.col-1-3:contains('#{season.upcase}')")
     end
 
     seasons.each do |season|
@@ -29,16 +31,19 @@ class DataImporter
       import_route_types
       import_departures
     end
-
-    true
   end
 
   private
 
     def import_departures
       @day_types.each do |day_type|
-        direction_samobor = day_type.parent.parent.next_element.css("td").first || next
-        direction_zagreb = day_type.parent.parent.next_element.css("td")[2] || next
+        direction_samobor = day_type.parent.parent.
+          next_element.next_element.
+          css("td").first || next
+        direction_zagreb = day_type.parent.parent.
+          next_element.
+          next_element.
+          css("td")[2] || next
 
         [{:is_return => false, :departures => direction_samobor},
          {:is_return => true,  :departures => direction_zagreb}].each do |raw_departure|
@@ -57,7 +62,9 @@ class DataImporter
           DatabasePopulator.execute(
             departures: departures_normalized,
             is_return: raw_departure[:is_return],
-            day_type: DayType.find_by(title: day_type.normalized_text)
+            day_type: DayType.
+              where(title: /#{day_type.normalized_text.gsub(/\s/,'')[0..3]}/).
+              first
           )
         end
       end
@@ -71,8 +78,10 @@ class DataImporter
     end
 
     def import_day_types
-      @line.parent.parent.css("em").tap do |day_types|
-        day_types.each {|dt| DayType.find_or_create_by(title: dt.normalized_text)}
+      DAY_TYPES.each {|dt| DayType.create(title: dt)}
+
+      @line.parent.parent.css("em").select do |day_type|
+        day_type.text =~ /\w/
       end
     end
 
