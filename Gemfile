@@ -6,6 +6,6 @@ gem "mongoid"
 gem "nokogiri"
 gem "minitest"
 gem "rake"
-gem 'sinatra'
+gem 'sinatra-contrib'
 
 gem "activesupport" # mongoid depends on it
