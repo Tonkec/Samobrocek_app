@@ -4,7 +4,7 @@
 
 ###### Rapidly find your next bus drive from Samobor to Zagreb!
 
-The [default page for the bus schedule in Samobor](http://samoborcek.hr/linija.php?id=18) is stuck in the past. 
+The [default page for the bus schedule in Samobor](http://www.samoborcek.hr/vozni-red/) is stuck in the past. 
 Let's bring the future to it!
 
 ### Features
