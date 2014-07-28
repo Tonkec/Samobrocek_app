@@ -17,8 +17,9 @@ class BusFinder
   end
 
   def execute
-    departures = find_departures
-    departures.each {|d| puts d.time.strftime("%H:%M") if d}
+    find_departures.tap do |dep|
+      dep.each {|d| puts d.time.strftime("%H:%M") }
+    end
   end
 
   private
@@ -40,6 +41,6 @@ class BusFinder
           day_type: DayType.now,
           is_return: @is_return
         ).send(position)
-      end
+      end.select {|d| d}
     end
 end

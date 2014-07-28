@@ -16,4 +16,8 @@ class Departure
   def time
     Time.now.beginning_of_day + time_in_seconds
   end
+
+  def time_humanized
+    time.strftime("%H:%M")
+  end
 end

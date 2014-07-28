@@ -1,77 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Zucko</title>
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  
-    <!-- Font Awesome -->
-  
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>   
-    <![endif]-->
-      <!--zucko-css-->
-     <link rel="stylesheet" type="text/css" href="/style.css">
-      <!--zucko-jquery-->
+     <link rel="stylesheet" type="text/css" href="/style.css"/>
      <script src="/javascripts.js"></script>
-
-  </style>
+     <title>Zucko</title>
   </head>  
   <body>
-     <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-lg-12 text-center direction">
-          <h3> Samobor - Zagreb </h3>
-        </div>
-      </div><!--row-->
-
-      <div class="row">
-        <div class="col-xs-6 col-lg-6 text-center">
-          <i class="icon-long-arrow-left icon-3x pull-right"></i>
-        </div>
-          
-        <div class="col-xs-6 col-lg-6 text-center">
-          <i class="icon-long-arrow-right icon-3x pull-left"></i>
-        </div>
-      </div>
-          
-      <div class="row">
-        <div class="col-xs-4 col-lg-4 text-center">
-          <img class="img-circle pull-right" src="http://i1154.photobucket.com/albums/p522/tonkec/samoborgif_zps9e95d178.gif">
-        </div>
-  
-        <div class="col-xs-4 col-lg-4 col-bus text-center">
-          <img class="img-bus" src="http://www.clker.com/cliparts/B/x/h/S/j/W/yellow-school-bus-hi.png">
-        </div>
-  
-        <div class="col-xs-4 col-lg-4 text-center">
-          <img class="img-circle pull-left" src="http://i1154.photobucket.com/albums/p522/tonkec/Zagreb_grb_zpsecf427fe.gif">
-        </div>
-      </div>
-
-</body>
-
-<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>﻿
-<!-- include Cycle plugin -->
-<script type="text/javascript" src="http://malsup.github.com/jquery.cycle.all.js"></script>
-
+    <ul>
+    <% @buses.each do |bus| %>
+      <li>
+        <%= bus.time_humanized %>
+      </li>
+    <% end %>
+    </ul>
+  </body>
 </html>
