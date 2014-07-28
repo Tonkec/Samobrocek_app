@@ -37,7 +37,7 @@ class Page
     puts "Success!"
 
     @xpath = @content.xpath("//tbody//p")
-  rescue OpenURI::HTTPError
+  rescue OpenURI::HTTPError, Errno::ECONNREFUSED
     puts "Proxy error, trying again..."
     retry
   end
