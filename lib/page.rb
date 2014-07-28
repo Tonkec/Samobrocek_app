@@ -14,7 +14,8 @@ class Page
   end
 
   def random_proxy
-    proxies = ["http://111.11.184.103:80/"]
+    proxies = ["http://46.38.51.49:6005/",
+               "http://183.224.1.119:80/"]
     proxies.sample 
   end
 
@@ -40,6 +41,9 @@ class Page
     puts "Success!"
 
     @xpath = @content.xpath("//tbody//p")
+  rescue OpenURI::HTTPError
+    puts "Proxy error, trying again..."
+    retry
   end
 
   def get_chunk(position)
@@ -54,6 +58,10 @@ class Page
     Array(position).map do |position|
       normalize_raw_titles @xpath[position].text
     end
+  end
+
+  def css(*args, &blk)
+    @content.css(*args, &blk)
   end
 
   private

@@ -7,17 +7,27 @@ class DataImporter
     Database.drop!
   end
 
-  def import_all
-    import_line
-    import_day_types
-    import_directions
-    import_route_types
+  def execute
+    # seasons = %w.ZIMSKI LJETNI..map do |season|
+    seasons = %w.LJETNI..map do |season|
+      @page.css("div.col-1-3:contains('#{season}')")
+    end
 
-    @page.schema[:departure_positions].each do |day_type, position|
-      import_chunk_pairs(position,
-                         Line.first,
-                         DayType.send(day_type),
-                         @page)
+    seasons.each do |season|
+      @season = season
+      @line_name = "autobusni kolodvor".upcase
+
+      import_all
+    end
+  end
+
+  def import_all
+    import_line_names(@line_name).each do |line|
+      @line = line
+      @day_types = import_day_types
+
+      import_route_types
+      import_departures
     end
 
     true
@@ -25,39 +35,52 @@ class DataImporter
 
   private
 
-    def import_chunk_pairs(position, line, day_type, page)
-      [[position, Direction.zagreb],
-       [position + 7, Direction.samobor]].each do |pair|
-        Chunk.fetch(
-          position: pair.first,
-          line: line,
-          direction: pair.last,
-          day_type: day_type,
-          page: page
-        ) 
+    def import_departures
+      @day_types.each do |day_type|
+        direction_samobor = day_type.parent.parent.next_element.css("td").first || next
+        direction_zagreb = day_type.parent.parent.next_element.css("td")[2] || next
+
+        [{:is_return => false, :departures => direction_samobor},
+         {:is_return => true,  :departures => direction_zagreb}].each do |raw_departure|
+
+          departures_fragmented = raw_departure[:departures].text.
+            split(/Polasci.+?:/)[1..-1].map do |fragment|
+              fragment.gsub(/[^\w\.\*, ]/, ''). 
+                gsub(/(\.)\s+(\w+)/, '\1\2'). # all hail *10. 00
+                split(' ')
+          end
+
+          departures_normalized = Hash[[:all, :novaki, :kerestinec].
+                                       zip(departures_fragmented)]
+
+
+          DatabasePopulator.execute(
+            departures: departures_normalized,
+            is_return: raw_departure[:is_return],
+            day_type: DayType.find_by(title: day_type.normalized_text)
+          )
+        end
       end
     end
 
-    def import_line
-      line_name = 
-        @page.get_title(@page.schema[:line_name]).first
-      Line.create(title: line_name)
+    def import_line_names(title)
+      @season.css("h3:contains('#{title}')").map do |line|
+        Line.find_or_create_by(title: line.text)
+        line
+      end
     end
 
     def import_day_types
-      day_types  = @page.get_title(@page.schema[:day_types])
-      day_types.each {|t| DayType.create(title: t)}
-    end
-
-    def import_directions
-      directions = @page.get_title(@page.schema[:directions])
-      directions.each {|t| Direction.create(title: t)}
+      @line.parent.parent.css("em").tap do |day_types|
+        day_types.each {|dt| DayType.find_or_create_by(title: dt.normalized_text)}
+      end
     end
 
     def import_route_types
-      types      = @page.get_title(@page.schema[:route_types])
+      types      = @line.parent.parent.css("td strong")[1..2]
 
-      types.each {|t| RouteType.create(title: t)}
-      RouteType.create(title: "direct")
+      types.each {|t| RouteType.find_or_create_by(title: t.normalized_text)}
+      RouteType.find_or_create_by(title: "direct")
+      RouteType.find_or_create_by(title: "ljubljanica")
     end
 end

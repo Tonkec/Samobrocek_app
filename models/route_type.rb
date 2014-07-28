@@ -8,11 +8,11 @@ class RouteType
   has_many :departures
 
   def self.kerestinec
-    where(title: "polasci preko kerestinca").first
+    where(title: /kerestin/).first
   end
 
   def self.novaki
-    where(title: "polasci preko novaka i rakitja").first
+    where(title: /novak/).first
   end
 
   def self.direct

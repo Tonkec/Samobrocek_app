@@ -5,6 +5,7 @@ class Departure
 
   field :time, type: Integer
   field :starred, type: Boolean, default: false
+  field :is_return, type: Boolean, default: false
 
   belongs_to :route_type
   belongs_to :direction
