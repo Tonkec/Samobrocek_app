@@ -1,2 +1,3 @@
 #! /usr/bin/env bash
-bundle exec ruby -e "require './bus_finder'; BusFinder.execute"
+command=$(printf "require './bus_finder'; BusFinder.execute('%s')" $*)
+bundle exec ruby -e "$command"

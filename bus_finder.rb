@@ -13,12 +13,12 @@ class BusFinder
   def initialize(*args)
     opts = args.first || {}
     
-    @is_return = !! opts[:is_return]
+    @is_return = args.first == '--return'
   end
 
   def execute
     departures = find_departures
-    departures.each {|d| puts d.time.strftime("%H:%M")}
+    departures.each {|d| puts d.time.strftime("%H:%M") if d}
   end
 
   private
