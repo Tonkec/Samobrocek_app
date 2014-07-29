@@ -22,19 +22,26 @@
 
       <ul>
         <% @buses[1..-1].each do |bus| %>
-          <li title="<%= bus.time %>">
+          <li class="big" title="<%= bus.time %>">
             za <span class="time"><%= bus.from_now_in_seconds %></span>
+          </li>
+          <li>
+            iliti u <%= bus.time.strftime("%H:%M") %>
           </li>
         <% end %>
       </ul>
 
+      <hr/>
       <h2>
         Kad je bio <span class="zucko">Žućko</span> za <a href="/za/<%= @departure %>"><b><%= @destination.capitalize %></b></a>?
       </h2>
 
       <ul>
-        <li title="<%= @buses.first.time %>">
+        <li class="big" title="<%= @buses.first.time %>">
           prije <span class="time"><%= @buses.first.from_now_in_seconds %></span>
+        </li>
+        <li>
+          iliti u <%= @buses.first.time.strftime("%H:%M") %>
         </li>
       </ul>
 
@@ -46,7 +53,9 @@
 
     <script type='text/javascript'>
       $(window).load(function(){
-        $(".main").bigtext();
+        $(".main").bigtext({
+          childSelector: "li.big, h2"
+        });
       });
 
       $(document).ready(function(){

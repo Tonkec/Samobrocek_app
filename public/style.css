@@ -1,5 +1,5 @@
 body {
-  padding:50px;
+  padding:20px;
   color: #000;
   background: #fff url("/cubes.png"); 
   text-align: center;
@@ -33,6 +33,10 @@ span.zucko {
 }
 
 a:visited {
+  color: #000;
+}
+
+a {
   color: #000;
 }
 
