@@ -4,10 +4,10 @@ require 'sinatra/reloader'
 require "./bus_finder"
 
 get '/' do
-  redirect '/zagreb'
+  redirect '/za/zagreb'
 end
 
-get '/zagreb' do
+get '/za/zagreb' do
   @destination = "zagreb"
   @departure   = "samobor"
   @buses = BusFinder.execute
@@ -16,7 +16,7 @@ get '/zagreb' do
   erb :index
 end
 
-get '/samobor' do
+get '/za/samobor' do
   @destination = "samobor"
   @departure   = "zagreb"
   @buses = BusFinder.execute("--return")
