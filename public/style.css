@@ -32,6 +32,10 @@ span.zucko {
   color: yellow;
 }
 
+a:visited {
+  color: #000;
+}
+
 @media screen and (min-width: 800px) {
     div.main {
         width: 800px;
