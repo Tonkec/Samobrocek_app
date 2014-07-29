@@ -20,4 +20,8 @@ class Departure
   def time_humanized
     time.strftime("%H:%M")
   end
+
+  def from_now_in_seconds
+    (time_in_seconds - Time.now.seconds_since_midnight).abs.round
+  end
 end

@@ -1,17 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+     <link rel="stylesheet" type="text/css" href="/reset.css"/>
      <link rel="stylesheet" type="text/css" href="/style.css"/>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
+     <script src="/moment-duration-format.js"></script>
+     
      <script src="/javascripts.js"></script>
+     <script src="/bigtext.js"></script>
      <title>Zucko</title>
   </head>  
   <body>
-    <ul>
-    <% @buses.each do |bus| %>
-      <li>
-        <%= bus.time_humanized %>
-      </li>
-    <% end %>
-    </ul>
+    <div class='main'>
+      <h2>
+        Kad će <span class="zucko">Žućko</span> za <b><%= @destination %></b>?
+      </h2>
+
+      <ul>
+        <% @buses[1..-1].each do |bus| %>
+          <li title="<%= bus.time %>">
+            za <span class="time"><%= bus.from_now_in_seconds %></span>
+          </li>
+        <% end %>
+      </ul>
+
+      <h2>
+        Kad je bio <span class="zucko">Žućko</span> za <b><%= @destination %></b>?
+      </h2>
+
+      <ul>
+        <li title="<%= @buses.first.time %>">
+          prije <span class="time"><%= @buses.first.from_now_in_seconds %></span>
+        </li>
+      </ul>
+
+    </div>
+    <script type='text/javascript'>
+      $(window).load(function(){
+        $(".main").bigtext();
+      });
+
+      $(document).ready(function(){
+        $("span.time").each(function(){
+          var seconds = parseInt($.trim($(this).text())); 
+          $(this).text(moment.duration(seconds, "seconds").format("h [hr] m [min]"));
+        });
+      });
+    </script>
   </body>
 </html>

@@ -1,3 +1,38 @@
 body {
+  padding:50px;
+  color: #000;
   background: #fff url("/cubes.png"); 
+  text-align: center;
+}
+
+div.main {
+  width: 100%;
+  margin: 0 auto;
+}
+
+ul {
+  list-style: none;
+  height: 50%;
+  margin: 0;
+}
+
+li {
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+b {
+  font-weight: bold;
+}
+
+span.zucko {
+  font-weight: bold;
+  color: yellow;
+}
+
+@media screen and (min-width: 800px) {
+    div.main {
+        width: 800px;
+    }
 }
