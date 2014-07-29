@@ -3,8 +3,8 @@ require "./lib/database"
 
 Database.load
 
-class BusFinder
-  # Returns 3 buses, the last bus departed,
+class DepartureFinder
+  # Returns 3 departures, the last bus departed,
   # the next departing one and the one after that
   def self.execute(*args)
     new(*args).execute

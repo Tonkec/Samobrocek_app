@@ -17,7 +17,7 @@
     <div class='main'>
 
       <h2>
-        Kad će <span class="zucko">Žućko</span> za <a href="/za/<%= @presenter.departure %>"><b><%= @presenter.destination.capitalize %></b></a>?
+        Kad će <span class="zucko">Žućko</span> za <a href="/za/<%= @presenter.origin %>"><b><%= @presenter.destination.capitalize %></b></a>?
       </h2>
 
       <ul>
@@ -33,7 +33,7 @@
 
       <hr/>
       <h2>
-        Kad je bio <span class="zucko">Žućko</span> za <a href="/za/<%= @presenter.departure %>"><b><%= @presenter.destination.capitalize %></b></a>?
+        Kad je bio <span class="zucko">Žućko</span> za <a href="/za/<%= @presenter.origin %>"><b><%= @presenter.destination.capitalize %></b></a>?
       </h2>
 
       <ul>
@@ -48,7 +48,7 @@
     </div>
 
     <div class='footer'>
-      Danas je <%= @presenter.day_type %>, dan za avanturu sa Žućkom.
+      Danas je <b><%= @presenter.day_type %></b>, dan za avanturu sa Žućkom.
     </div>
 
     <script type='text/javascript'>

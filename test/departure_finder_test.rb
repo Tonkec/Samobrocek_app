@@ -1,5 +1,5 @@
 require "minitest/autorun"
-require "./bus_finder"
+require "./departure_finder"
 require "pry"
 
 Database.load
@@ -20,13 +20,13 @@ describe "bus finder" do
       describe "and the time is 13:00" do
         it "returns 3 buses" do
           with_time_set_to "13:00 24-3-2014" do
-            BusFinder.execute.count.must_equal 3
+            DepartureFinder.execute.count.must_equal 3
           end
         end
 
         it "and the first bus is departing in 12:40" do
           with_time_set_to "13:00 24-3-2014" do
-            BusFinder.execute.
+            DepartureFinder.execute.
               first.time.strftime("%H:%M").
               must_equal "12:40"
           end
@@ -34,7 +34,7 @@ describe "bus finder" do
 
         it "and the second bus is departing in 13:10" do
           with_time_set_to "13:00 24-3-2014" do
-            BusFinder.execute.
+            DepartureFinder.execute.
               second.time.strftime("%H:%M").
               must_equal "13:10"
           end
@@ -42,7 +42,7 @@ describe "bus finder" do
 
         it "and the last bus is departing in 13:30" do
           with_time_set_to "13:00 24-3-2014" do
-            BusFinder.execute.
+            DepartureFinder.execute.
               last.time.strftime("%H:%M").
               must_equal "13:30"
           end
@@ -56,7 +56,7 @@ describe "bus finder" do
       describe "and the time is 18:00" do
         it "returns 3 buses" do
           with_time_set_to "18:00 24-3-2014" do
-            BusFinder.
+            DepartureFinder.
               execute(direction: Direction.samobor).
               count.must_equal 3
           end
@@ -64,7 +64,7 @@ describe "bus finder" do
 
         it "and the first bus is departing in 18:00" do
           with_time_set_to "18:00 24-3-2014" do
-            BusFinder.
+            DepartureFinder.
               execute(direction: Direction.samobor).
               first.time.strftime("%H:%M").
               must_equal "18:00"
@@ -73,7 +73,7 @@ describe "bus finder" do
 
         it "and the second bus is departing in 18:25" do
           with_time_set_to "18:00 24-3-2014" do
-            BusFinder.
+            DepartureFinder.
               execute(direction: Direction.samobor).
               second.time.strftime("%H:%M").
               must_equal "18:25"
@@ -82,7 +82,7 @@ describe "bus finder" do
 
         it "and the last bus is departing in 18:50" do
           with_time_set_to "18:00 24-3-2014" do
-            BusFinder.
+            DepartureFinder.
               execute(direction: Direction.samobor).
               last.time.strftime("%H:%M").
               must_equal "18:50"
@@ -94,7 +94,7 @@ describe "bus finder" do
         # edge cases yo
         it "and the first bus is departing in 17:40" do
           with_time_set_to "17:59 24-3-2014" do
-            BusFinder.
+            DepartureFinder.
               execute(direction: Direction.samobor).
               first.time.strftime("%H:%M").
               must_equal "17:40"
@@ -103,7 +103,7 @@ describe "bus finder" do
 
         it "and the second bus is departing in 18:00" do
           with_time_set_to "17:59 24-3-2014" do
-            BusFinder.
+            DepartureFinder.
               execute(direction: Direction.samobor).
               second.time.strftime("%H:%M").
               must_equal "18:00"
@@ -112,7 +112,7 @@ describe "bus finder" do
 
         it "and the last bus is departing in 18:25" do
           with_time_set_to "17:59 24-3-2014" do
-            BusFinder.
+            DepartureFinder.
               execute(direction: Direction.samobor).
               last.time.strftime("%H:%M").
               must_equal "18:25"
