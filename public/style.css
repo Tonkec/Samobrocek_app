@@ -3,6 +3,7 @@ body {
   color: #000;
   background: #fff url("/cubes.png"); 
   text-align: center;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 div.main {
