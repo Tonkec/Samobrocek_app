@@ -17,11 +17,11 @@
     <div class='main'>
 
       <h2>
-        Kad će <span class="zucko">Žućko</span> za <a href="/za/<%= @departure %>"><b><%= @destination.capitalize %></b></a>?
+        Kad će <span class="zucko">Žućko</span> za <a href="/za/<%= @presenter.departure %>"><b><%= @presenter.destination.capitalize %></b></a>?
       </h2>
 
       <ul>
-        <% @buses[1..-1].each do |bus| %>
+        <% @presenter.future_departures.each do |bus| %>
           <li class="big" title="<%= bus.time %>">
             za <span class="time"><%= bus.from_now_in_seconds %></span>
           </li>
@@ -33,22 +33,22 @@
 
       <hr/>
       <h2>
-        Kad je bio <span class="zucko">Žućko</span> za <a href="/za/<%= @departure %>"><b><%= @destination.capitalize %></b></a>?
+        Kad je bio <span class="zucko">Žućko</span> za <a href="/za/<%= @presenter.departure %>"><b><%= @presenter.destination.capitalize %></b></a>?
       </h2>
 
       <ul>
-        <li class="big" title="<%= @buses.first.time %>">
-          prije <span class="time"><%= @buses.first.from_now_in_seconds %></span>
+        <li class="big" title="<%= @presenter.last_departure.time %>">
+          prije <span class="time"><%= @presenter.last_departure.from_now_in_seconds %></span>
         </li>
         <li>
-          iliti u <%= @buses.first.time.strftime("%H:%M") %>
+          iliti u <%= @presenter.last_departure.time.strftime("%H:%M") %>
         </li>
       </ul>
 
     </div>
 
     <div class='footer'>
-      Danas je <%= @day_type %>, dan za avanturu sa Žućkom.
+      Danas je <%= @presenter.day_type %>, dan za avanturu sa Žućkom.
     </div>
 
     <script type='text/javascript'>
