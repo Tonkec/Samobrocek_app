@@ -24,4 +24,25 @@ class Departure
   def from_now_in_seconds
     (time_in_seconds - Time.now.seconds_since_midnight).abs.round
   end
+
+  def humanized_route_type
+    buffer = case route_type.title
+             when /kerestin/
+               "preko kerestinca"
+             when /novak/
+               "preko novaka"
+             else 
+               ""
+             end
+
+    if starred?
+      buffer += (buffer.blank? ? "preko ljubljanice" : " i ljubljanice")
+    end
+
+    if buffer.blank?
+      "brza linija"
+    else
+      buffer
+    end
+  end
 end

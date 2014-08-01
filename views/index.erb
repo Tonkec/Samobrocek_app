@@ -27,6 +27,7 @@
           </li>
           <li>
             iliti u <%= bus.time.strftime("%H:%M") %>
+              i to <%=  bus.humanized_route_type %>
           </li>
         <% end %>
       </ul>
@@ -42,6 +43,7 @@
         </li>
         <li>
           iliti u <%= @presenter.last_departure.time.strftime("%H:%M") %>
+          i to <%= @presenter.last_departure.humanized_route_type %>
         </li>
       </ul>
 
