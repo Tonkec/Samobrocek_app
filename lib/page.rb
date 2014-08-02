@@ -9,12 +9,6 @@ class Page
     fetch_page
   end
 
-  def random_proxy
-    proxies = ["http://46.38.51.49:6005/",
-               "http://183.224.1.119:80/"]
-    proxies.sample 
-  end
-
   def random_desktop_user_agent
     user_agents = [
       "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11",
@@ -32,7 +26,8 @@ class Page
 
   def fetch_page
     puts "Fetching data..."
-    content = open(@url, :proxy => random_proxy, "User-Agent" => random_desktop_user_agent)
+    content = open(@url, :proxy => ENV["PROXY_URL"],
+                   "User-Agent" => random_desktop_user_agent)
     @content = Nokogiri::HTML(content)
     puts "Success!"
 
