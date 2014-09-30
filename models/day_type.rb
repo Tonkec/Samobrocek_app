@@ -8,15 +8,15 @@ class DayType
   has_many :departures
 
   def self.radni
-    where(title: "radni dan").first
+    where(title: /radni dan/).first
   end
 
   def self.subota
-    where(title: "subota").first
+    where(title: /subota/).first
   end
 
   def self.nedjelja
-    where(title: "nedjelja i blagdani").first
+    where(title: /nedjelja/).first
   end
 
   def self.now

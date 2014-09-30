@@ -2,6 +2,7 @@ require "mongoid"
 
 class Departure
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   field :time, type: Integer
   field :starred, type: Boolean, default: false
@@ -30,7 +31,7 @@ class Departure
                "preko kerestinca"
              when /novak/
                "preko novaka"
-             else 
+             else
                ""
              end
 
