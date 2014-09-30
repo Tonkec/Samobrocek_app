@@ -15,8 +15,8 @@ describe "zimski" do
   end
 
   describe "data importer for line id=18" do
-    it "imports exactly 267 departures" do
-      Departure.count.must_equal 267
+    it "imports exactly 259 departures" do
+      Departure.count.must_equal 259
     end
 
     describe "when direction is zagreb" do

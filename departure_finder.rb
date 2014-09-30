@@ -17,9 +17,7 @@ class DepartureFinder
   end
 
   def execute
-    find_departures.tap do |dep|
-      dep.each {|d| d.time.strftime("%H:%M") }
-    end
+    find_departures
   end
 
   private
@@ -41,6 +39,6 @@ class DepartureFinder
           day_type: DayType.now,
           is_return: @is_return
         ).send(position)
-      end.select {|d| d}
+      end
     end
 end

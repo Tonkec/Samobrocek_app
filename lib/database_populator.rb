@@ -16,13 +16,13 @@ class DatabasePopulator
   private
 
     def self.populate_database(departures, opts)
-      puts departures
+      ap departures
       departures.each do |key, times|
         times.each do |time|
           time.tr!('.,', ':')
 
-          if time !~ /^\*{,2}\d{1,2}:\d{2}$/
-            puts InvalidTimeFormat.new("Invalid time format: #{time.inspect}")
+          if time !~ /^\*{,1}\d{1,2}:\d{2}$/
+            puts InvalidTimeFormat.new("Skipping: #{time.inspect}")
             next
           end
 

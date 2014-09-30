@@ -56,6 +56,27 @@ describe "zimski" do
     end
 
     describe "when direction is samobor" do
+      describe "and it is Saturday, 22-3-2014" do
+        describe "and the time is 23:30" do
+          before do
+            @buses = DepartureFinder.execute("--return")
+          end
+
+          it "returns 3 buses" do
+            with_time_set_to "23:30 22-3-2014" do
+              @buses.count.must_equal 3
+            end
+          end
+
+          it "last bus returned is the first bus from the next day" do
+            with_time_set_to "23:30 22-3-2014" do
+              @buses.last.time.strftime("%H:%M").
+                must_equal "05:25"
+            end
+          end
+        end
+      end
+
       describe "and it is Monday, 24-3-2014" do
         describe "and the time is 18:00" do
           it "returns 3 buses" do
