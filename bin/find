@@ -1,3 +1,7 @@
-#! /usr/bin/env bash
-command=$(printf "require './departure_finder'; DepartureFinder.execute('%s')" $*)
-bundle exec ruby -e "$command"
+#! /usr/bin/env ruby
+require "./departure_finder"
+
+puts "za #{ARGV[0] == "--return" ? "samobor" : "zagreb"}:"
+DepartureFinder.execute(ARGV[0]).each do |dep|
+  puts dep.time.strftime("%H:%M")
+end

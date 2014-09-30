@@ -12,13 +12,13 @@ class DepartureFinder
 
   def initialize(*args)
     opts = args.first || {}
-    
+
     @is_return = args.first == '--return'
   end
 
   def execute
     find_departures.tap do |dep|
-      dep.each {|d| puts d.time.strftime("%H:%M") }
+      dep.each {|d| d.time.strftime("%H:%M") }
     end
   end
 
