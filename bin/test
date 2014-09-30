@@ -1,0 +1,2 @@
+#! /usr/bin/env bash
+ruby -e 'ARGV.each { |path| require "./#{path}" }' test/*.rb
