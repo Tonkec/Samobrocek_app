@@ -8,10 +8,10 @@
      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
      <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
      <script src="/moment-duration-format.js"></script>
-     
+
      <script src="/javascripts.js"></script>
      <title>Zucko</title>
-  </head>  
+  </head>
   <body>
     <div class='main'>
 
@@ -20,6 +20,7 @@
       </h2>
 
       <ul>
+        <% if @presenter.future_departures.present? %>
         <% @presenter.future_departures.each do |bus| %>
           <li class="big" title="<%= bus.time %>">
             za <span class="time"><%= bus.from_now_in_seconds %></span>
@@ -28,6 +29,9 @@
             iliti u <%= bus.time.strftime("%H:%M") %>
               i to <%=  bus.humanized_route_type %>
           </li>
+        <% end %>
+        <% else %>
+          <li class="big">Nema do jutra, spavaj ispod mosta :(</li>
         <% end %>
       </ul>
 
@@ -61,7 +65,7 @@
 
       $(document).ready(function(){
         $("span.time").each(function(){
-          var seconds = parseInt($.trim($(this).text())); 
+          var seconds = parseInt($.trim($(this).text()));
           $(this).text(moment.duration(seconds, "seconds").format("h [hr] m [min]"));
         });
       });
