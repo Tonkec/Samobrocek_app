@@ -1,3 +1,5 @@
+require 'awesome_print'
+
 class InvalidTimeFormat < StandardError; end
 class DatabasePopulator
   def self.execute(opts)
@@ -14,12 +16,14 @@ class DatabasePopulator
   private
 
     def self.populate_database(departures, opts)
+      puts departures
       departures.each do |key, times|
         times.each do |time|
           time.tr!('.,', ':')
 
           if time !~ /^\*{,2}\d{1,2}:\d{2}$/
-            raise InvalidTimeFormat.new("Invalid time format: #{time.inspect}")
+            puts InvalidTimeFormat.new("Invalid time format: #{time.inspect}")
+            next
           end
 
           Departure.create(

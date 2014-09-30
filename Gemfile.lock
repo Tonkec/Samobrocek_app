@@ -10,6 +10,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    awesome_print (1.2.0)
     backports (3.3.4)
     bson (2.3.0)
     builder (3.2.2)
@@ -65,6 +66,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
+  awesome_print
   minitest
   mongoid
   nokogiri
