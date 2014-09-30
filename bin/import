@@ -1,2 +1,2 @@
 #! /usr/bin/env bash
-bundle exec ruby -e "require './import_data'; ImportData.execute"
+bundle exec ruby -e "require './import_data'; ImportData.execute('$1')"

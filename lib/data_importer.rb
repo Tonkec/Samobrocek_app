@@ -1,26 +1,22 @@
 class DataImporter
   DAY_TYPES = ["radni dan", "subota", "nedjelja"]
-  SCHEDULES = ["ljetni"]
 
   def initialize(opts)
     @page = opts[:page] ||
       raise(ArgumentError.new("can't find :page in
                               the arguments"))
+    @season_argument = opts[:season] ||
+      raise(ArgumentError.new("season is missing"))
 
     Database.drop!
   end
 
   def execute
-    seasons = SCHEDULES.map do |season|
-      @page.css("div.col-1-3:contains('#{season.upcase}')")
-    end
+    @season = @page.css("div.col-1-3:contains('#{@season_argument.upcase}')")
 
-    seasons.each do |season|
-      @season = season
-      @line_name = "autobusni kolodvor".upcase
+    @line_name = "autobusni kolodvor".upcase
 
-      import_all
-    end
+    import_all
   end
 
   def import_all
@@ -37,27 +33,17 @@ class DataImporter
 
     def import_departures
       @day_types.each do |day_type|
-        direction_samobor = day_type.parent.parent.
-          next_element.next_element.
-          css("td").first || next
-        direction_zagreb = day_type.parent.parent.
-          next_element.
-          next_element.
-          css("td")[2] || next
-
-        [{:is_return => false, :departures => direction_samobor},
-         {:is_return => true,  :departures => direction_zagreb}].each do |raw_departure|
+        DepartureExtractor.execute(@season_argument, day_type).each do |raw_departure|
 
           departures_fragmented = raw_departure[:departures].text.
             split(/Polasci.+?:/)[1..-1].map do |fragment|
-              fragment.gsub(/[^\w\.\*, ]/, ''). 
+              fragment.gsub(/[^\w\.\*, ]/, '').
                 gsub(/(\.)\s+(\w+)/, '\1\2'). # all hail *10. 00
                 split(' ')
           end
 
           departures_normalized = Hash[[:all, :novaki, :kerestinec].
                                        zip(departures_fragmented)]
-
 
           DatabasePopulator.execute(
             departures: departures_normalized,

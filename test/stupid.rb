@@ -1,16 +1,20 @@
 # a very stupid test
 #
 require "minitest/autorun"
-require "./import_data"
 
-ImportData.execute
+Database.load
+
+unless Departure.count > 0
+  require "./import_data"
+  ImportData.execute('zimski')
+end
 
 describe "data importer for line id=18" do
   describe "when direction is zagreb" do
     describe "and route type is 'kerestinec'" do
       describe "and day type is 'radni dan'" do
         it "imports 4 departures" do
-          Departure.where(:direction => Direction.zagreb,
+          Departure.where(:is_return => false,
                           :route_type => RouteType.kerestinec,
                           :day_type => DayType.radni)
           .count.must_equal 4
@@ -19,7 +23,7 @@ describe "data importer for line id=18" do
 
       describe "and day type is 'subota'" do
         it "imports 9 departures" do
-          Departure.where(:direction => Direction.zagreb,
+          Departure.where(:is_return => false,
                           :route_type => RouteType.kerestinec,
                           :day_type => DayType.subota)
           .count.must_equal 9
@@ -28,7 +32,7 @@ describe "data importer for line id=18" do
 
       describe "and day type is 'nedjelja'" do
         it "imports 5 departures" do
-          Departure.where(:direction => Direction.zagreb,
+          Departure.where(:is_return => false,
                           :route_type => RouteType.kerestinec,
                           :day_type => DayType.nedjelja)
           .count.must_equal 5
@@ -55,10 +59,6 @@ describe "data importer for line id=18" do
       @it.day_type.must_equal DayType.radni
     end
 
-    it "has correct direction" do
-      @it.direction.must_equal Direction.zagreb
-    end
-
     it "has correct line" do
       @it.line.must_equal Line.first
     end
@@ -79,10 +79,6 @@ describe "data importer for line id=18" do
 
     it "has correct day type" do
       @it.day_type.must_equal DayType.nedjelja
-    end
-
-    it "has correct direction" do
-      @it.direction.must_equal Direction.samobor
     end
 
     it "has correct line" do

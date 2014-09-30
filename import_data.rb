@@ -3,6 +3,7 @@ require 'open-uri'
 require 'nokogiri'
 require "pry"
 
+require "./lib/departure_extractor"
 require "./lib/page"
 require "./lib/database_populator"
 require "./lib/database"
@@ -22,18 +23,31 @@ class Nokogiri::XML::Element
   end
 end
 
+SEASONS = %w.ljetni zimski.
+
 class ImportData
-  def self.execute
+  def self.execute(season)
+    validate_season season
+
     page = Page.new(
       :url => "http://www.samoborcek.hr/vozni-red/"
     )
 
     importer = DataImporter.new(
-      :page => page
+      :page => page,
+      :season => season
     )
 
     importer.execute
 
     puts "Imported #{Departure.count} departures"
+  end
+
+  private
+
+  def self.validate_season(season)
+    unless SEASONS.include?(season)
+      raise(ArgumentError.new("#{season} is not a valid season. use one of these: #{SEASONS.join(", ")}"))
+    end
   end
 end

@@ -3,9 +3,10 @@ require "./departure_finder"
 require "pry"
 
 Database.load
+
 unless Departure.count > 0
   require "./import_data"
-  ImportData.execute
+  ImportData.execute('zimski')
 end
 
 def with_time_set_to(date)
@@ -57,7 +58,7 @@ describe "bus finder" do
         it "returns 3 buses" do
           with_time_set_to "18:00 24-3-2014" do
             DepartureFinder.
-              execute(direction: Direction.samobor).
+              execute("--return").
               count.must_equal 3
           end
         end
@@ -65,7 +66,7 @@ describe "bus finder" do
         it "and the first bus is departing in 18:00" do
           with_time_set_to "18:00 24-3-2014" do
             DepartureFinder.
-              execute(direction: Direction.samobor).
+              execute("--return").
               first.time.strftime("%H:%M").
               must_equal "18:00"
           end
@@ -74,7 +75,7 @@ describe "bus finder" do
         it "and the second bus is departing in 18:25" do
           with_time_set_to "18:00 24-3-2014" do
             DepartureFinder.
-              execute(direction: Direction.samobor).
+              execute("--return").
               second.time.strftime("%H:%M").
               must_equal "18:25"
           end
@@ -83,7 +84,7 @@ describe "bus finder" do
         it "and the last bus is departing in 18:50" do
           with_time_set_to "18:00 24-3-2014" do
             DepartureFinder.
-              execute(direction: Direction.samobor).
+              execute("--return").
               last.time.strftime("%H:%M").
               must_equal "18:50"
           end
@@ -95,7 +96,7 @@ describe "bus finder" do
         it "and the first bus is departing in 17:40" do
           with_time_set_to "17:59 24-3-2014" do
             DepartureFinder.
-              execute(direction: Direction.samobor).
+              execute("--return").
               first.time.strftime("%H:%M").
               must_equal "17:40"
           end
@@ -104,7 +105,7 @@ describe "bus finder" do
         it "and the second bus is departing in 18:00" do
           with_time_set_to "17:59 24-3-2014" do
             DepartureFinder.
-              execute(direction: Direction.samobor).
+              execute("--return").
               second.time.strftime("%H:%M").
               must_equal "18:00"
           end
@@ -113,7 +114,7 @@ describe "bus finder" do
         it "and the last bus is departing in 18:25" do
           with_time_set_to "17:59 24-3-2014" do
             DepartureFinder.
-              execute(direction: Direction.samobor).
+              execute("--return").
               last.time.strftime("%H:%M").
               must_equal "18:25"
           end
