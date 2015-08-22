@@ -15,7 +15,6 @@ Let's bring the future to it!
 * Informs wether the drive is direct or not
 * Gives an option for filtering fast or slow routes
 
-
 ### Getting started
 
 Import some data with
@@ -30,8 +29,18 @@ Or use the Rake task
 rake import
 ```
 
+Start the server with 
+
+```
+rake server
+```
+
 ### Running tests
 
 ```
 rake
 ```
+
+### License
+
+MIT
