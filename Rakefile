@@ -32,6 +32,10 @@ namespace :sass do
   end
 end
 
+task :mongo do
+  exec "mongod --dbpath data"
+end
+
 def check_node_sass_present
   yield
 rescue => ex
