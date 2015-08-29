@@ -16,9 +16,9 @@ class Presenter
     @origin      = ROUTES.invert[@destination]
 
     finder_args = @destination == :samobor ? "--return" : nil
-    
+
     departures = DepartureFinder.execute(finder_args)
-    
+
     @future_departures = departures[1..-1]
     @last_departure    = departures.first
     @day_type = DayType.now.title
