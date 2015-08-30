@@ -12,9 +12,12 @@ main {
 }
 
 .logo {
-  background: url('/icons/bus-small-yellow.png');
-  height: 32px;
-  width: 32px;
+  background: url('/icons/logo.png');
+  text-shadow: white 0px 0px 2px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 122.5px;
+  height: 27.5px;
 }
 
 .mdl-card__title {
@@ -39,28 +42,38 @@ main {
   text-align: center;
 }
 
+.mdl-card__title-text {
+  font-family: 'Rochester', cursive;
+}
+
 .material-icons.md-64 { font-size: 64px; }
+
+.mdl-layout__header-row {
+  padding-left: 10px;
+  padding-right: 10px;
+}
 
 .icon {
   display: inline-block;
+  background-size: 100%;
   width: 64px;
   height: 64px;
 
   &.tram {
-    background: url('/icons/tram.png');
-  }
-
-  &.bike {
-    background: url('/icons/bike.png');
+    background-image: url('/icons/tram.png');
   }
 
   &.helmet {
-    background: url('/icons/helmet.png');
+    background-image: url('/icons/helmet.png');
   }
 }
 
 .mdl-layout-title {
   color: black;
+}
+
+.mdl-button {
+  color: #fff;
 }
 
 .mdl-card {
