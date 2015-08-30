@@ -1,13 +1,31 @@
 <div class="demo-card-wide mdl-card mdl-shadow--2dp">
   <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text"><%= title %></h2>
+    <h2 class="mdl-card__title-text">
+      <%= departure.humanized_route_type %>
+    </h2>
   </div>
-  <div class="mdl-card__supporting-text">
-    Seoski
+  <div class="time-section">
+    <i class="material-icons">query_builder</i>
+    <span class="time"><%= departure.time_humanized %></span>
   </div>
+
   <div class="mdl-card__actions mdl-card--border">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-      <%= time %>
-    </a>
+    <div class='icons'>
+      <% if departure.ljubljanica? %>
+        <div class='icon tram'></div>
+      <% end %>
+
+      <% if departure.novaki? %>
+        <i class='material-icons md-64'>directions_bike</i>
+      <% end %>
+
+      <% if departure.kerestinec? %>
+        <i class='material-icons md-64'>directions_boat</i>
+      <% end %>
+
+      <% if departure.fast? %>
+        <div class='icon helmet'></div>
+      <% end %>
+    </div>
   </div>
 </div>

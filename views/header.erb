@@ -4,13 +4,13 @@
     <span class="mdl-layout-title"><span class="zucko">Zucko</span></span>
     <div class="mdl-layout-spacer"></div>
     <nav class="mdl-navigation">
-      <button class="mdl-button mdl-button--raised mdl-button--accent mdl-button--is-active">
+      <a class="mdl-button <%= @presenter.for_zagreb? ? "mdl-button--raised mdl-button--accent mdl-button--is-active" : "" %>" href="/za/zagreb">
         za Zagreb
-      </button>
+      </a>
 
-      <button class="mdl-button ">
+      <a class="mdl-button <%= @presenter.for_samobor? ? "mdl-button--raised mdl-button--accent mdl-button--is-active" : "" %>" href="/za/samobor">
         za Samobor
-      </button>
+      </a>
     </nav>
   </div>
 </header>

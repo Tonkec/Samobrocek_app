@@ -1,7 +1,62 @@
+// $black: #332F3E;
+// $light-green: #80C8B5;
+// $dark-green: #4DB788;
+// $yellow: #E6C973;
+
+header {
+  position: fixed;
+}
+
+main {
+  margin-top: 56px;
+}
+
 .logo {
   background: url('/icons/bus-small-yellow.png');
   height: 32px;
   width: 32px;
+}
+
+.mdl-card__title {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.time-section {
+  height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  .time {
+    vertical-align: top;
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+
+.mdl-card__actions {
+  height: 64px;
+  text-align: center;
+}
+
+.material-icons.md-64 { font-size: 64px; }
+
+.icon {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+
+  &.tram {
+    background: url('/icons/tram.png');
+  }
+
+  &.bike {
+    background: url('/icons/bike.png');
+  }
+
+  &.helmet {
+    background: url('/icons/helmet.png');
+  }
 }
 
 .mdl-layout-title {

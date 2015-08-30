@@ -8,7 +8,7 @@ class Presenter
             :samobor => :zagreb}
 
   attr_reader :destination, :origin,
-    :future_departures, :last_departure,
+    :departures,
     :day_type
 
   def initialize(params)
@@ -19,9 +19,21 @@ class Presenter
 
     departures = DepartureFinder.execute(finder_args)
 
-    @future_departures = departures[1..-1]
-    @last_departure    = departures.first
     @day_type = DayType.now.title
+
+    @departures = {
+      previous: departures[0],
+      current:  departures[1],
+      next:     departures[2],
+    }
+  end
+
+  def for_zagreb?
+    @destination == :zagreb
+  end
+
+  def for_samobor?
+    @destination == :samobor
   end
 end
 

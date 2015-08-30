@@ -25,22 +25,36 @@ class Departure
     (time_in_seconds - Time.now.seconds_since_midnight).abs.round
   end
 
+  def ljubljanica?
+    starred? || DayType.now.weekend?
+  end
+
+  def novaki?
+    route_type.title =~ /novak/
+  end
+
+  def kerestinec?
+    route_type.title =~ /kerestin/
+  end
+
+  def fast?
+    !ljubljanica? &&
+      !kerestinec? &&
+      !novaki?
+  end
+
   def humanized_route_type
     buffer = case route_type.title
              when /kerestin/
-               "preko kerestinca"
+               "Kerestinec Cruise"
              when /novak/
-               "preko novaka"
+               "Tour de Novaki"
              else
                ""
              end
 
-    if starred?
-      buffer += (buffer.blank? ? "preko ljubljanice" : " i ljubljanice")
-    end
-
     if buffer.blank?
-      "brza linija"
+      ljubljanica? ? "Ljubljanica Voyage" : "Fast and Fourius"
     else
       buffer
     end

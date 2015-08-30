@@ -29,4 +29,8 @@ class DayType
       nedjelja
     end
   end
+
+  def weekend?
+    title == "subota" || title == "nedjelja"
+  end
 end

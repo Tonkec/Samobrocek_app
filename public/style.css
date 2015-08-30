@@ -1,7 +1,44 @@
+header {
+  position: fixed; }
+
+main {
+  margin-top: 56px; }
+
 .logo {
   background: url("/icons/bus-small-yellow.png");
   height: 32px;
   width: 32px; }
+
+.mdl-card__title {
+  margin-left: auto;
+  margin-right: auto; }
+
+.time-section {
+  height: 30px;
+  margin-left: auto;
+  margin-right: auto; }
+  .time-section .time {
+    vertical-align: top;
+    font-size: 24px;
+    line-height: 24px; }
+
+.mdl-card__actions {
+  height: 64px;
+  text-align: center; }
+
+.material-icons.md-64 {
+  font-size: 64px; }
+
+.icon {
+  display: inline-block;
+  width: 64px;
+  height: 64px; }
+  .icon.tram {
+    background: url("/icons/tram.png"); }
+  .icon.bike {
+    background: url("/icons/bike.png"); }
+  .icon.helmet {
+    background: url("/icons/helmet.png"); }
 
 .mdl-layout-title {
   color: black; }
