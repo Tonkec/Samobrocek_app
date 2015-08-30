@@ -1,7 +1,7 @@
 require "pry"
 desc "Starts the application server on port 4567"
 task :server do
-  exec "ruby app.rb"
+  exec "shotgun app.rb"
 end
 
 desc "Imports summer departures"

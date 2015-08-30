@@ -9,5 +9,6 @@ gem 'nokogiri'
 gem 'minitest'
 gem 'sinatra-contrib'
 gem 'awesome_print'
+gem 'shotgun'
 
 gem 'activesupport' # mongoid depends on it
