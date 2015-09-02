@@ -3,4 +3,4 @@ development:
     default:
       database: mongoid
       hosts:
-        - localhost:27017
+        - <%= ENV["DB_1_PORT_27017_TCP_ADDR"] || "localhost" %>:<%= ENV["DB_1_PORT_27017_TCP_PORT"] || 27017 %>
