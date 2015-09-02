@@ -15,8 +15,11 @@ RUN cd /root/src/ruby-2.2.3; ./configure; make install
 RUN gem update --system
 RUN gem install bundler
 
-RUN git clone https://github.com/tonkec/Zucko /root/sinatra
-RUN cd /root/sinatra; bundle install
+ENV APP_HOME /opt/www
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
 
-EXPOSE 4567
-CMD ["/usr/local/bin/foreman","start","-d","/root/sinatra"]
+ADD Gemfile* $APP_HOME/
+RUN bundle install
+
+ADD . $APP_HOME
