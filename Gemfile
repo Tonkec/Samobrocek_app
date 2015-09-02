@@ -11,5 +11,6 @@ gem 'sinatra-contrib'
 gem 'awesome_print'
 gem 'shotgun'
 gem 'foreman'
+gem 'thin'
 
 gem 'activesupport' # mongoid depends on it
