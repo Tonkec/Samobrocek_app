@@ -1,0 +1,14 @@
+db:
+  image: library/mongo
+  ports:
+    - "27017:27017"
+
+web:
+  build: .
+  volumes:
+    - .:/opt/www
+  command: foreman start -d /opt/www
+  ports:
+    - "80:4567"
+  links:
+    - db
