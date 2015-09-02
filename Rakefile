@@ -4,9 +4,16 @@ task :server do
   exec "shotgun app.rb"
 end
 
-desc "Imports summer departures"
-task :import do
-  exec "./bin/import ljetni"
+namespace :import do
+  desc "Imports summer departures"
+  task :summer do
+    exec "./bin/import ljetni"
+  end
+
+  desc "Imports winter departures"
+  task :winter do
+    exec "./bin/import zimski"
+  end
 end
 
 require "rake/testtask"

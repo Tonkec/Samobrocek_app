@@ -20,13 +20,13 @@ Let's bring the future to it!
 Import some data with
 
 ```
-./bin/import
+./bin/import zimski
 ```
 
 Or use the Rake task
 
 ```
-rake import
+rake import:winter
 ```
 
 Start the server with 
