@@ -74,6 +74,16 @@ main {
 
 .mdl-button {
   color: #fff;
+  background-color: rgba(0,0,0, 0.12);
+
+  &.inactive {
+    box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+  }
+
+
+  &:hover {
+    background-color: rgba(0,0,0, 0.12);
+  }
 }
 
 .mdl-card {
