@@ -12,5 +12,6 @@ gem 'awesome_print'
 gem 'shotgun'
 gem 'foreman'
 gem 'thin'
+gem 'rake'
 
 gem 'activesupport' # mongoid depends on it
