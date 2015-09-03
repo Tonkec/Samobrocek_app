@@ -25,21 +25,24 @@ end
 SEASONS = %w.ljetni zimski.
 
 class FetchData
-  def self.execute(season)
+  def self.execute(season, verbose = false)
     validate_season season
 
     page = Page.new(
-      :url => "http://www.samoborcek.hr/vozni-red/"
+      url: "http://www.samoborcek.hr/vozni-red/"
     )
 
     importer = DataImporter.new(
-      :page => page,
-      :season => season
+      page: page,
+      season: season,
+      verbose: verbose
     )
 
     importer.execute
 
-    puts "Imported #{Departure.count} departures"
+    if verbose
+      puts "Imported #{Departure.count} departures"
+    end
   end
 
   private

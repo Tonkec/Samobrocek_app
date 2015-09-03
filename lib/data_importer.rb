@@ -7,6 +7,8 @@ class DataImporter
                               the arguments"))
     @season_argument = opts[:season] ||
       raise(ArgumentError.new("season is missing"))
+
+    @verbose = opts[:verbose]
   end
 
   def execute
@@ -46,6 +48,7 @@ class DataImporter
                                        zip(departures_fragmented)]
 
           DatabasePopulator.execute(
+            verbose: @verbose,
             departures: departures_normalized,
             is_return: raw_departure[:is_return],
             day_type: DayType.

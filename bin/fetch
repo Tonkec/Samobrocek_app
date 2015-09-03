@@ -1,2 +1,2 @@
 #! /usr/bin/env bash
-bundle exec ruby -e "require './fetch_data'; FetchData.execute('$1')"
+bundle exec ruby -e "require './fetch_data'; FetchData.execute('$1', true)"
