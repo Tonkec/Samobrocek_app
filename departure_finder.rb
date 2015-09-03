@@ -24,7 +24,7 @@ class DepartureFinder
 
     def range_hash
       {
-        :last   => 0..Time.now.seconds_since_midnight,
+        :last   => 0..Time.now.in_time_zone.seconds_since_midnight,
         :first  => 1.minute.from_now.
                      seconds_since_midnight..3600*24,
         :second => 1.minute.from_now.
