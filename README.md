@@ -1,4 +1,4 @@
-## Zucko *(Little Yellow Fellow)*
+## [Kad će Žućko?](http://kadcezucko.info)
 
 [![Code Climate](https://codeclimate.com/github/Tonkec/Zucko.png)](https://codeclimate.com/github/Tonkec/Zucko)
 
