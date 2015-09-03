@@ -9,7 +9,7 @@ namespace :db do
   task :drop do
     require "./lib/database"
     Database.load
-    Mongoid.purge!
+    Database.drop!
   end
 
   namespace :import do
@@ -21,6 +21,18 @@ namespace :db do
     desc "Imports winter departures"
     task :winter => [:drop] do
       exec "mongorestore data/winter"
+    end
+  end
+
+  namespace :fetch do
+    desc "Fetches summer departures"
+    task :summer => [:drop] do
+      exec "./bin/fetch ljetni"
+    end
+
+    desc "Fetches winter departures"
+    task :winter => [:drop] do
+      exec "./bin/fetch zimski"
     end
   end
 end
