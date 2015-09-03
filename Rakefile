@@ -4,15 +4,24 @@ task :server do
   exec "shotgun app.rb"
 end
 
-namespace :import do
-  desc "Imports summer departures"
-  task :summer do
-    exec "./bin/import ljetni"
+namespace :db do
+  desc "drops database"
+  task :drop do
+    require "./lib/database"
+    Database.load
+    Mongoid.purge!
   end
 
-  desc "Imports winter departures"
-  task :winter do
-    exec "./bin/import zimski"
+  namespace :import do
+    desc "Imports summer departures"
+    task :summer do
+      exec "./bin/import ljetni"
+    end
+
+    desc "Imports winter departures"
+    task :winter do
+      exec "./bin/import zimski"
+    end
   end
 end
 

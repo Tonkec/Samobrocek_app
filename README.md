@@ -26,7 +26,7 @@ Import some data with
 Or use the Rake task
 
 ```
-rake import:winter
+rake db:import:winter
 ```
 
 Start the server with 
