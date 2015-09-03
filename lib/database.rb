@@ -4,15 +4,12 @@ require "./models/departure"
 require "./models/route_type"
 
 class Database
-  def self.load(env = :development)
-    load_mongoid(env)
+  def self.load(env = ENV["RACK_ENV"])
+    load_mongoid(env || "development")
   end
 
-  def self.drop! # the base WOW WOW WOOOOW
-    Line.destroy_all
-    DayType.destroy_all
-    Departure.destroy_all
-    RouteType.destroy_all
+  def self.drop!
+    Mongoid.purge!
   end
 
   private

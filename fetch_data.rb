@@ -1,16 +1,15 @@
 require 'rubygems'
 require 'open-uri'
 require 'nokogiri'
-require "pry"
+require 'pry'
 
-require "./lib/departure_extractor"
-require "./lib/page"
-require "./lib/database_populator"
-require "./lib/database"
-require "./lib/data_importer"
+require './lib/departure_extractor'
+require './lib/page'
+require './lib/database_populator'
+require './lib/database'
+require './lib/data_importer'
 
 Database.load
-Database.drop!
 
 class Nokogiri::XML::Element
   def normalized_text

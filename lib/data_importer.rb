@@ -38,8 +38,8 @@ class DataImporter
           departures_fragmented = raw_departure[:departures].text.
             split(/Polasci.+?:/)[1..-1].map do |fragment|
               normalized = fragment.gsub(/[^\w\.\*, ]/, '').
-                gsub(/(\.)\s+(\w+)/, '\1\2'). # all hail *10. 00
-                gsub(/(\*+)\s+(\w+)/, '\1\2'). # all hail ** 0.15
+                gsub(/(\.)\s+(\w+)/, '\1\2'). # *10. 00
+                gsub(/(\*+)\s+(\w+)/, '\1\2'). # ** 0.15
                 split(' ')
               normalized
           end
