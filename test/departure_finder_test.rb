@@ -5,6 +5,7 @@ require "./test/helper"
 require "./departure_finder"
 
 Database.load
+Database.drop!
 
 describe "zimski" do
   before do

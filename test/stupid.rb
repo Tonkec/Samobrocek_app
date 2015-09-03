@@ -5,6 +5,7 @@ require "minitest/autorun"
 require "./lib/database"
 
 Database.load
+Database.drop!
 
 describe "zimski" do
   before do

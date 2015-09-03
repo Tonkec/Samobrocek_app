@@ -10,6 +10,7 @@ require "./lib/database"
 require "./lib/data_importer"
 
 Database.load
+Database.drop!
 
 describe DataImporter do
   before do
