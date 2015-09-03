@@ -9,8 +9,8 @@ Database.load
 describe "zimski" do
   before do
     unless Departure.count > 0
-      require "./import_data"
-      ImportData.execute('zimski')
+      require "./fetch_data"
+      FetchData.execute('zimski')
     end
   end
 

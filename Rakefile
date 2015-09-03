@@ -14,13 +14,13 @@ namespace :db do
 
   namespace :import do
     desc "Imports summer departures"
-    task :summer do
-      exec "./bin/import ljetni"
+    task :summer => [:drop] do
+      exec "mongorestore data/summer"
     end
 
     desc "Imports winter departures"
-    task :winter do
-      exec "./bin/import zimski"
+    task :winter => [:drop] do
+      exec "mongorestore data/winter"
     end
   end
 end

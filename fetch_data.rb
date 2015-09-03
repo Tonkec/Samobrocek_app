@@ -25,7 +25,7 @@ end
 
 SEASONS = %w.ljetni zimski.
 
-class ImportData
+class FetchData
   def self.execute(season)
     validate_season season
 

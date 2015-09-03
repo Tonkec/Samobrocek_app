@@ -20,12 +20,6 @@ Let's bring the future to it!
 Import some data with
 
 ```
-./bin/import zimski
-```
-
-Or use the Rake task
-
-```
 rake db:import:winter
 ```
 
