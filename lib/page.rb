@@ -27,7 +27,6 @@ class Page
   end
 
   def fetch_page
-    binding.pry
     open(@url, :proxy => ENV["PROXY_URL"],
          "User-Agent" => random_desktop_user_agent)
   rescue OpenURI::HTTPError, Errno::ECONNREFUSED

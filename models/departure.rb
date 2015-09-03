@@ -4,7 +4,7 @@ class Departure
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :time, type: Integer
+  field :time_in_seconds, type: Integer
   field :starred, type: Boolean, default: false
   field :is_return, type: Boolean, default: false
 
@@ -12,7 +12,8 @@ class Departure
   belongs_to :line
   belongs_to :day_type
 
-  alias_method :time_in_seconds, :time
+  validates :time_in_seconds, uniqueness: {scope: [:day_type_id, :is_return]}
+
   def time
     Time.now.beginning_of_day + time_in_seconds
   end

@@ -3,21 +3,16 @@
 require "minitest/autorun"
 
 require "./lib/database"
+require "./fetch_data"
 
 Database.load
 Database.drop!
+FetchData.execute('zimski')
 
 describe "zimski" do
-  before do
-    unless Departure.count > 0
-      require "./fetch_data"
-      FetchData.execute('zimski')
-    end
-  end
-
   describe "data importer for line id=18" do
-    it "imports exactly 259 departures" do
-      Departure.count.must_equal 259
+    it "imports exactly 243 departures" do
+      Departure.count.must_equal 243
     end
 
     describe "when direction is zagreb" do

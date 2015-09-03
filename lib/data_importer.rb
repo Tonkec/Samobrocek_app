@@ -42,6 +42,8 @@ class DataImporter
                 gsub(/(\*+)\s+(\w+)/, '\1\2'). # ** 0.15
                 split(' ')
               normalized
+
+              normalize_times(normalized)
           end
 
           departures_normalized = Hash[[:all, :novaki, :kerestinec].
@@ -80,5 +82,13 @@ class DataImporter
       types.each {|t| RouteType.find_or_create_by(title: t.normalized_text)}
       RouteType.find_or_create_by(title: "direct")
       RouteType.find_or_create_by(title: "ljubljanica")
+    end
+
+    # accepts array of times in non-standard format (with commas, dots etc.)
+    # and converts it to HH:MM format
+    def normalize_times(raw_times)
+      raw_times.map do |time|
+        time.tr!('.,', ':')
+      end
     end
 end

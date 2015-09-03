@@ -4,6 +4,8 @@ require "./lib/database"
 Database.load
 
 class DepartureFinder
+  class DepartureNotFound < StandardError; end
+
   # Returns 3 departures, the last bus departed,
   # the next departing one and the one after that
   def self.execute(*args)
@@ -34,11 +36,14 @@ class DepartureFinder
 
     def find_departures
       range_hash.map do |position, range|
-        Departure.asc(:time).where(
-          time: range,
+        args = {
+          time_in_seconds: range,
           day_type: DayType.now,
           is_return: @is_return
-        ).send(position)
-      end
+        }
+
+        Departure.asc(:time_in_seconds).where(args).send(position) or
+          raise DepartureNotFound
+      end 
     end
 end

@@ -3,30 +3,28 @@ require "pry"
 
 require "./test/helper"
 require "./departure_finder"
+require "./fetch_data"
 
 Database.load
 Database.drop!
+FetchData.execute('zimski')
 
 describe "zimski" do
-  before do
-    unless Departure.count > 0
-      require "./fetch_data"
-      FetchData.execute('zimski')
-    end
-  end
-
   describe "bus finder" do
     describe "when direction is zagreb" do
       describe "and it is Monday, 24-3-2014" do
         describe "and the time is 13:00" do
+          before do 
+            @date = "13:00 24-3-2014"
+          end
           it "returns 3 buses" do
-            with_time_set_to "13:00 24-3-2014" do
+            with_time_set_to @date do
               find_departures_for_zagreb.count.must_equal 3
             end
           end
 
           it "and the first bus is departing at 12:40" do
-            with_time_set_to "13:00 24-3-2014" do
+            with_time_set_to @date do
               find_departures_for_zagreb.
                 first.time.strftime("%H:%M").
                 must_equal "12:40"
@@ -34,7 +32,7 @@ describe "zimski" do
           end
 
           it "and the second bus is departing at 13:10" do
-            with_time_set_to "13:00 24-3-2014" do
+            with_time_set_to @date do
               find_departures_for_zagreb.
                 second.time.strftime("%H:%M").
                 must_equal "13:10"
@@ -42,10 +40,54 @@ describe "zimski" do
           end
 
           it "and the last bus is departing at 13:30" do
-            with_time_set_to "13:00 24-3-2014" do
+            with_time_set_to @date do
               find_departures_for_zagreb.
                 last.time.strftime("%H:%M").
                 must_equal "13:30"
+            end
+          end
+        end
+
+        describe "and the time is 11:30" do
+          before do 
+            @date = "11:30 24-3-2014"
+          end
+          it "returns 3 buses" do
+            with_time_set_to @date do
+              find_departures_for_zagreb.count.must_equal 3
+            end
+          end
+
+          it "and the first bus is departing at 11:10" do
+            with_time_set_to @date do
+              find_departures_for_zagreb.
+                first.time.strftime("%H:%M").
+                must_equal "11:20"
+            end
+          end
+
+          it "and the second bus is departing at 11:40" do
+            with_time_set_to @date do
+              find_departures_for_zagreb.
+                second.time.strftime("%H:%M").
+                must_equal "11:40"
+            end
+          end
+
+          it "and the last bus is departing at 12:05" do
+            with_time_set_to @date do
+              find_departures_for_zagreb.
+                last.time.strftime("%H:%M").
+                must_equal "12:05"
+            end
+          end
+
+          it "and the last bus is 'Tour de Novaki'" do
+            with_time_set_to @date do
+              bus = find_departures_for_zagreb.
+                last
+
+              bus.route_type.must_equal RouteType.novaki
             end
           end
         end
