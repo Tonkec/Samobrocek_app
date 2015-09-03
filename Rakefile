@@ -39,8 +39,14 @@ namespace :sass do
   end
 end
 
+desc "start mongodb server"
 task :mongo do
   exec "mongod --dbpath data"
+end
+
+desc "deploy to kadcezucko.info"
+task :deploy do
+  exec "ssh core@kadcezucko.info 'cd zucko; git pull'"
 end
 
 def check_node_sass_present
