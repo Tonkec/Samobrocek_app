@@ -7,8 +7,6 @@ class DataImporter
                               the arguments"))
     @season_argument = opts[:season] ||
       raise(ArgumentError.new("season is missing"))
-
-    Database.drop!
   end
 
   def execute
