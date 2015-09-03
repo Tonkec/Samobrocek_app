@@ -1,12 +1,14 @@
+require 'nokogiri'
+
 class Page
   attr_reader :schema
 
   def initialize(opts)
-    @url = opts[:url] ||
-      raise(ArgumentError.new("can't find
-        :url in the arguments"))
+    @url = opts[:url] 
 
-    fetch_page
+    @raw_content = raw_content(opts) 
+    @content = Nokogiri::HTML(@raw_content)
+    @xpath   = @content.xpath("//tbody//p")
   end
 
   def random_desktop_user_agent
@@ -25,13 +27,9 @@ class Page
   end
 
   def fetch_page
-    puts "Fetching data..."
-    content = open(@url, :proxy => ENV["PROXY_URL"],
-                   "User-Agent" => random_desktop_user_agent)
-    @content = Nokogiri::HTML(content)
-    puts "Success!"
-
-    @xpath = @content.xpath("//tbody//p")
+    binding.pry
+    open(@url, :proxy => ENV["PROXY_URL"],
+         "User-Agent" => random_desktop_user_agent)
   rescue OpenURI::HTTPError, Errno::ECONNREFUSED
     puts "Proxy error, trying again..."
     retry
@@ -56,6 +54,18 @@ class Page
   end
 
   private
+
+    def raw_content(opts)
+      if ENV["RACK_ENV"] == "test"
+        return File.read("data/original.html")
+      end
+
+      if opts[:url] 
+        fetch_page
+      else
+        File.read(opts[:path])
+      end
+    end
 
     def normalize_raw_titles(raw)
       raw.gsub(" ", "").gsub(/\b\W+\b/, " ").
