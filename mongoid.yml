@@ -1,6 +1,21 @@
 development:
   sessions:
     default:
-      database: mongoid
+      database: zucko_development
+      hosts:
+        - localhost:27017
+
+production:
+  sessions:
+    default:
+      database: zucko_production
       hosts:
         - <%= ENV["DB_1_PORT_27017_TCP_ADDR"] || "localhost" %>:<%= ENV["DB_1_PORT_27017_TCP_PORT"] || 27017 %>
+
+test:
+  sessions:
+    default:
+      database: zucko_test
+      hosts:
+        - localhost:27017
+
