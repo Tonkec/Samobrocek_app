@@ -97,12 +97,7 @@ describe "zimski" do
     describe "when direction is samobor" do
       describe "and it is Saturday, 22-3-2014" do
         describe "and the time is 23:30" do
-          it "returns 3 buses" do
-            with_time_set_to "23:30 22-3-2014" do
-              find_departures_for_samobor.count.must_equal 3
-            end
-          end
-
+          it "returns 3 buses"
           it "last bus returned is the first bus from the next day"
         end
       end
