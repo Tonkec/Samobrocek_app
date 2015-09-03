@@ -1,6 +1,7 @@
 ## [Kad će Žućko?](http://kadcezucko.info)
 
 [![Code Climate](https://codeclimate.com/github/Tonkec/Zucko.png)](https://codeclimate.com/github/Tonkec/Zucko)
+[![Build Status](https://travis-ci.org/shime/kadcezucko.info.svg?branch=master)](https://travis-ci.org/shime/kadcezucko.info)
 
 ###### Rapidly find your next bus drive from Samobor to Zagreb!
 
