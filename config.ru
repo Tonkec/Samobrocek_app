@@ -4,12 +4,13 @@ Time.zone = 'Europe/Zagreb'
 require './app'
 
 
-if ENV["MEMCACHED_PORT_11211_TCP_ADDR"]
-  memcache_url = "#{ENV["MEMCACHED_PORT_11211_TCP_ADDR"]}:#{ENV["ZUCKO_DB_1_PORT_27017_TCP_PORT"]}"
+if ENV["MEMCACHED_1_PORT_11211_TCP_ADDR"]
+  memcache_url = "#{ENV["MEMCACHED_1_PORT_11211_TCP_ADDR"]}:#{ENV["MEMCACHED_1_PORT_11211_TCP_PORT"]}"
+  client = Dalli::Client.new(memcache_url, password: "password", username: "admin")
   use Rack::Cache,
     verbose: true,
-    metastore:   "memcached://#{memcache_url}",
-  entitystore: "memcached://#{memcache_url}"
+    metastore: client,
+  entitystore: client
 end
 
 run Sinatra::Application
