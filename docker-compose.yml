@@ -5,6 +5,8 @@ db:
   restart: always
 
 web:
+  environment:
+        RACK_ENV: production
   build: .
   volumes:
     - .:/opt/www
