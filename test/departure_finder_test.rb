@@ -1,13 +1,5 @@
-require "minitest/autorun"
-require "pry"
-
 require "./test/helper"
 require "./departure_finder"
-require "./fetch_data"
-
-Database.load
-Database.drop!
-FetchData.execute('zimski')
 
 describe "zimski" do
   describe "bus finder" do

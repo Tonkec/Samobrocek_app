@@ -1,13 +1,4 @@
-# a very stupid test
-#
-require "minitest/autorun"
-
-require "./lib/database"
-require "./fetch_data"
-
-Database.load
-Database.drop!
-FetchData.execute('zimski')
+require "./test/helper"
 
 describe "zimski" do
   describe "data importer for line id=18" do

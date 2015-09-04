@@ -1,6 +1,14 @@
 ENV["RACK_ENV"] ||= "test"
 
+require "minitest/autorun"
 require "nokogiri"
+require "pry"
+
+require "./fetch_data"
+
+Database.load
+Database.drop!
+FetchData.execute('zimski')
 
 class Nokogiri::XML::Element
   def normalized_text
