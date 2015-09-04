@@ -16,9 +16,15 @@
 
       <main class="mdl-layout__content">
         <div class='page-content'>
-          <%= erb :card, locals: {title: "Prethodni bus", departure: @presenter.departures[:previous]}%>
-          <%= erb :card, locals: {title: "Trenutni bus", departure: @presenter.departures[:current]}%>
-          <%= erb :card, locals: {title: "Sljedeci bus", departure: @presenter.departures[:next]}%>
+          <% if @presenter.departures[:previous] %>
+            <%= erb :card, locals: {title: "Prethodni bus", departure: @presenter.departures[:previous]}%>
+          <% end %>
+          <% if @presenter.departures[:current] %>
+            <%= erb :card, locals: {title: "Trenutni bus", departure: @presenter.departures[:current]}%>
+          <% end %>
+          <% if @presenter.departures[:next] %>
+            <%= erb :card, locals: {title: "Sljedeci bus", departure: @presenter.departures[:next]}%>
+          <% end %>
         </div>
       </main>
 

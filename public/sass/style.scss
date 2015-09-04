@@ -7,20 +7,12 @@ header {
   position: fixed;
 }
 
-main {
-  margin-top: 56px;
+body {
+  background-image: url('/gplaypattern.png');
 }
 
-main::after {
-  content: "";
-  background-image: url('/gplaypattern.png');
-  opacity: 1;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;   
+main {
+  margin-top: 56px;
 }
 
 .logo {

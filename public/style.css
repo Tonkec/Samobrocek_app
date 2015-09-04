@@ -1,19 +1,11 @@
 header {
   position: fixed; }
 
+body {
+  background-image: url("/gplaypattern.png"); }
+
 main {
   margin-top: 56px; }
-
-main::after {
-  content: "";
-  background-image: url("/gplaypattern.png");
-  opacity: 1;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1; }
 
 .logo {
   background: url("/icons/logo.png");

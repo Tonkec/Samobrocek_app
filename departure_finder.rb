@@ -42,8 +42,7 @@ class DepartureFinder
           is_return: @is_return
         }
 
-        Departure.asc(:time_in_seconds).where(args).send(position) or
-          raise DepartureNotFound
+        Departure.asc(:time_in_seconds).where(args).send(position) 
       end 
     end
 end
