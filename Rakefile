@@ -1,4 +1,3 @@
-require "pry"
 desc "Starts the application server on port 4567"
 task :server do
   exec "shotgun app.rb"

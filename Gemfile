@@ -14,5 +14,7 @@ gem 'foreman'
 gem 'thin'
 gem 'rake'
 gem 'holidays'
+gem 'dalli'
+gem 'rack-cache'
 
 gem 'activesupport' # mongoid depends on it

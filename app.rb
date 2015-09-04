@@ -1,5 +1,8 @@
 require 'sinatra'
 require 'sinatra/reloader'
+require "dalli"
+require "rack-cache"
+require "pry"
 
 require "./departure_finder"
 
@@ -43,6 +46,9 @@ end
 
 get '/za/:destination' do
   @presenter = Presenter.new(params)
+
+  max_age = @presenter.departures[:current].time - Time.now
+  cache_control :public, max_age: max_age
 
   erb :index
 end
