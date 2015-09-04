@@ -4,6 +4,11 @@ db:
     - "27017:27017"
   restart: always
 
+memcached:
+  image: tutum/memcached
+  ports:
+    - "11211:11211"
+
 web:
   environment:
         RACK_ENV: production
@@ -16,3 +21,4 @@ web:
   restart: always
   links:
     - db
+    - memcached
