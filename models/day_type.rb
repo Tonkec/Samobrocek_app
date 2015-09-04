@@ -1,4 +1,5 @@
 require "mongoid"
+require "holidays"
 
 class DayType
   include Mongoid::Document
@@ -7,26 +8,35 @@ class DayType
 
   has_many :departures
 
-  def self.radni
-    where(title: /radni dan/).first
-  end
+  class << self
+    def radni
+      where(title: /radni dan/).first
+    end
+    alias_method :weekday, :radni
 
-  def self.subota
-    where(title: /subota/).first
-  end
+    def subota
+      where(title: /subota/).first
+    end
+    alias_method :saturday, :subota
 
-  def self.nedjelja
-    where(title: /nedjelja/).first
-  end
+    def nedjelja
+      where(title: /nedjelja/).first
+    end
+    alias_method :sunday, :nedjelja
 
-  def self.now
-    case Time.now.wday
-    when 1..5
-      radni
-    when 6
-      subota
-    when 0
-      nedjelja
+    def now
+      unless Holidays.on(Time.now, :hr).empty?
+        return nedjelja
+      end
+
+      case Time.now.wday
+      when 1..5
+        radni
+      when 6
+        subota
+      when 0
+        nedjelja
+      end
     end
   end
 

@@ -20,6 +20,7 @@ GEM
     eventmachine (1.0.8)
     foreman (0.78.0)
       thor (~> 0.19.1)
+    holidays (2.2.0)
     i18n (0.6.9)
     json (1.8.1)
     method_source (0.8.2)
@@ -80,6 +81,7 @@ DEPENDENCIES
   activesupport
   awesome_print
   foreman
+  holidays
   minitest
   mongoid
   nokogiri

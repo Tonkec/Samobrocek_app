@@ -13,5 +13,6 @@ gem 'shotgun'
 gem 'foreman'
 gem 'thin'
 gem 'rake'
+gem 'holidays'
 
 gem 'activesupport' # mongoid depends on it
