@@ -2,6 +2,7 @@ db:
   image: library/mongo
   ports:
     - "27017:27017"
+  restart: always
 
 web:
   build: .
@@ -10,5 +11,6 @@ web:
   command: foreman start -d /opt/www
   ports:
     - "80:4567"
+  restart: always
   links:
     - db
