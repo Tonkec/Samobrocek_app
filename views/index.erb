@@ -16,14 +16,20 @@
 
       <main class="mdl-layout__content">
         <div class='page-content'>
+          <% if @presenter.departures[:past] %>
+            <%= erb :card, locals: {title: "Prijasnji bus", departure: @presenter.departures[:past]}%>
+          <% end %>
           <% if @presenter.departures[:previous] %>
             <%= erb :card, locals: {title: "Prethodni bus", departure: @presenter.departures[:previous]}%>
           <% end %>
           <% if @presenter.departures[:current] %>
-            <%= erb :card, locals: {title: "Trenutni bus", departure: @presenter.departures[:current]}%>
+            <%= erb :card, locals: {title: "Trenutni bus", departure: @presenter.departures[:current], id: "current-departure"} %>
           <% end %>
           <% if @presenter.departures[:next] %>
             <%= erb :card, locals: {title: "Sljedeci bus", departure: @presenter.departures[:next]}%>
+          <% end %>
+          <% if @presenter.departures[:future] %>
+            <%= erb :card, locals: {title: "Buduci bus", departure: @presenter.departures[:future]}%>
           <% end %>
         </div>
       </main>
@@ -31,4 +37,8 @@
       <%= erb :footer %>
     </div>
   </body>
+
+  <script type='text/javascript'>
+    document.getElementById("current-departure").scrollIntoView();
+  </script>
 </html>

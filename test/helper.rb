@@ -27,6 +27,12 @@ def with_time_set_to(date)
   end
 end
 
+class Time
+  def self.minutes_since_midnight_in_seconds
+    (Time.now.in_time_zone.seconds_since_midnight.to_i / 60) * 60
+  end
+end
+
 def find_departures_for_zagreb
   DepartureFinder.execute
 end
@@ -34,4 +40,3 @@ end
 def find_departures_for_samobor
   DepartureFinder.execute("--return")
 end
-

@@ -19,10 +19,25 @@ class DepartureFinder
   end
 
   def execute
-    find_departures
+    args = {
+      day_type: DayType.now,
+      is_return: @is_return
+    }
+
+    departures = Departure.desc(:time_in_seconds).where(args.merge({
+      :time_in_seconds.lt => minutes_since_midnight_in_seconds
+    })).limit(2).reverse + Departure.asc(:time_in_seconds).where(args.merge({
+      :time_in_seconds.gte => minutes_since_midnight_in_seconds
+    })).limit(3)
+
+    departures
   end
 
   private
+
+    def minutes_since_midnight_in_seconds
+      (Time.now.in_time_zone.seconds_since_midnight / 60).to_i * 60
+    end
 
     def range_hash
       {
@@ -36,11 +51,6 @@ class DepartureFinder
 
     def find_departures
       range_hash.map do |position, range|
-        args = {
-          time_in_seconds: range,
-          day_type: DayType.now,
-          is_return: @is_return
-        }
 
         Departure.asc(:time_in_seconds).where(args).send(position) 
       end 

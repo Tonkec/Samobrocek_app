@@ -25,9 +25,11 @@ class Presenter
     @day_type = DayType.now.title
 
     @departures = {
-      previous: departures[0],
-      current:  departures[1],
-      next:     departures[2],
+      past:     departures[0],
+      previous: departures[1],
+      current:  departures[2],
+      next:     departures[3],
+      future:   departures[4],
     }
   end
 
