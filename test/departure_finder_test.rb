@@ -112,9 +112,30 @@ describe "zimski" do
 
     describe "when direction is samobor" do
       describe "and it is Saturday, 22-3-2014" do
-        describe "and the time is 23:30" do
-          it "returns 3 buses"
-          it "last bus returned is the first bus from the next day"
+        describe "and the time is 23:46" do
+          before do
+            @time = "23:46 22-3-2014" # the last bus is gone
+          end
+
+          it "returns only previous buses" do
+            with_time_set_to @time do
+              find_departures_for_samobor.map {|departure| departure.time.strftime("%H:%M") }.
+                must_equal ["23:05", "23:45"]
+            end
+          end
+        end
+
+        describe "and the time is 00:15" do
+          before do
+            @time = "00:15 22-3-2014" # the last bus is gone
+          end
+
+          it "returns only future buses" do
+            with_time_set_to @time do
+              find_departures_for_samobor.map {|departure| departure.time.strftime("%H:%M") }.
+                must_equal ["05:00", "05:40", "06:00"]
+            end
+          end
         end
       end
 
