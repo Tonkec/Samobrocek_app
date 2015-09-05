@@ -1,3 +1,12 @@
+task :console do
+  require 'irb'
+  require 'irb/completion'
+  require './lib/database' # You know what to do.
+  Database.load
+  ARGV.clear
+  IRB.start
+end
+
 desc "Starts the application server on port 4567"
 task :server do
   exec "shotgun app.rb"
