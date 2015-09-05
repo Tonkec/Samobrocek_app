@@ -1,35 +1,4 @@
-<style type='text/css'>
-  .mdl-card {
-    overflow: visible;
-  }
-  .ribbon {
-    background-color: rgb(33,150,243);
-    white-space: nowrap;
-    /* top left corner */
-    position: absolute;
-    left: -10px;
-    top: 150px;
-    /* 45 deg ccw rotation */
-    /* shadow */
-    -webkit-box-shadow: 0 0 10px #888;
-    -moz-box-shadow: 0 0 10px #888;
-    box-shadow: 0 0 10px #888;
-  }
-  .ribbon span {
-    color: #fff;
-    display: block;
-    margin: 1px 0;
-    padding: 10px 10px;
-    text-align: center;
-    text-decoration: none;
-    /* shadow */
-    text-shadow: 0 0 5px #444;
-  }
-</style>
 <div class="demo-card-wide mdl-card mdl-shadow--2dp" id="<%= defined?(id) ? id : "" %>">
-  <div class='ribbon'>
-    <span><%= title %></span>
-  </div>
   <div class="mdl-card__title">
     <h2 class="mdl-card__title-text">
       <%= departure.humanized_route_type %>
@@ -58,5 +27,6 @@
         <div class='icon helmet'></div>
       <% end %>
     </div>
+    <span class="card-type"><%= title %></span>
   </div>
 </div>

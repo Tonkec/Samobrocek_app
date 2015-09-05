@@ -28,6 +28,14 @@ main {
     font-size: 24px;
     line-height: 24px; }
 
+.card-type {
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.2);
+  font-style: italic;
+  margin-left: 10px;
+  position: absolute;
+  left: 0px; }
+
 .mdl-card__actions {
   height: 64px;
   text-align: center; }
