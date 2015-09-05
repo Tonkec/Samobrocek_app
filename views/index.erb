@@ -20,10 +20,10 @@
             <%= erb :card, locals: {title: "Prijasnji bus", departure: @presenter.departures[:past]}%>
           <% end %>
           <% if @presenter.departures[:previous] %>
-            <%= erb :card, locals: {title: "Prethodni bus", departure: @presenter.departures[:previous]}%>
+            <%= erb :card, locals: {title: "Prethodni bus", departure: @presenter.departures[:previous], id: "previous-departure"}%>
           <% end %>
           <% if @presenter.departures[:current] %>
-            <%= erb :card, locals: {title: "Trenutni bus", departure: @presenter.departures[:current], id: "current-departure"} %>
+            <%= erb :card, locals: {title: "Trenutni bus", departure: @presenter.departures[:current]} %>
           <% end %>
           <% if @presenter.departures[:next] %>
             <%= erb :card, locals: {title: "Sljedeci bus", departure: @presenter.departures[:next]}%>
@@ -39,6 +39,6 @@
   </body>
 
   <script type='text/javascript'>
-    document.getElementById("current-departure").scrollIntoView();
+    document.getElementById("previous-departure").scrollIntoView();
   </script>
 </html>
