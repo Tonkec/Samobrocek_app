@@ -39,7 +39,7 @@ describe "zimski" do
             end
           end
 
-          it "and the first bus is departing at 12:40" do
+          it "and the previous bus is departing at 12:40" do
             with_time_set_to @date do
               previous_bus_for_zagreb.
                 time.strftime("%H:%M").
@@ -47,7 +47,7 @@ describe "zimski" do
             end
           end
 
-          it "and the second bus is departing at 13:10" do
+          it "and the current bus is departing at 13:10" do
             with_time_set_to @date do
               current_bus_for_zagreb.
                 time.strftime("%H:%M").
@@ -55,7 +55,7 @@ describe "zimski" do
             end
           end
 
-          it "and the last bus is departing at 13:30" do
+          it "and the next bus is departing at 13:30" do
             with_time_set_to @date do
               next_bus_for_zagreb.
                 time.strftime("%H:%M").
@@ -74,7 +74,7 @@ describe "zimski" do
             end
           end
 
-          it "and the first bus is departing at 11:10" do
+          it "and the previous bus is departing at 11:10" do
             with_time_set_to @date do
               previous_bus_for_zagreb.
                 time.strftime("%H:%M").
@@ -82,7 +82,7 @@ describe "zimski" do
             end
           end
 
-          it "and the second bus is departing at 11:40" do
+          it "and the current bus is departing at 11:40" do
             with_time_set_to @date do
               current_bus_for_zagreb.
                 time.strftime("%H:%M").
@@ -90,7 +90,7 @@ describe "zimski" do
             end
           end
 
-          it "and the last bus is departing at 12:05" do
+          it "and the next bus is departing at 12:05" do
             with_time_set_to @date do
               next_bus_for_zagreb.
                 time.strftime("%H:%M").
@@ -98,7 +98,7 @@ describe "zimski" do
             end
           end
 
-          it "and the last bus is 'Tour de Novaki'" do
+          it "and the next bus is 'Tour de Novaki'" do
             with_time_set_to @date do
               bus = find_departures_for_zagreb.
                 last
@@ -126,7 +126,7 @@ describe "zimski" do
             end
           end
 
-          it "and the first bus is departing at 18:00" do
+          it "and the previous bus is departing at 18:00" do
             with_time_set_to "18:00 24-3-2014" do
               previous_bus_for_zagreb.
                 time.strftime("%H:%M").
@@ -134,7 +134,7 @@ describe "zimski" do
             end
           end
 
-          it "and the second bus is departing at 18:25" do
+          it "and the current bus is departing at 18:25" do
             with_time_set_to "18:00 24-3-2014" do
               current_bus_for_samobor.
                 time.strftime("%H:%M").
@@ -142,7 +142,7 @@ describe "zimski" do
             end
           end
 
-          it "and the last bus is departing at 18:50" do
+          it "and the next bus is departing at 18:50" do
             with_time_set_to "18:00 24-3-2014" do
               next_bus_for_samobor.
                 time.strftime("%H:%M").
@@ -159,26 +159,29 @@ describe "zimski" do
           end
         end
 
-        describe "and the time is 17:59" do
-          # edge cases
-          it "and the first bus is departing at 17:40" do
-            with_time_set_to "17:59 24-3-2014" do
+        describe "and the time is 17:59:59" do
+          before do
+            @time = "17:59:59 24-3-2014"
+          end
+
+          it "and the previous bus is departing at 17:40" do
+            with_time_set_to @time do
               previous_bus_for_samobor.
                 time.strftime("%H:%M").
                 must_equal "17:40"
             end
           end
 
-          it "and the second bus is departing at 18:00" do
-            with_time_set_to "17:59 24-3-2014" do
+          it "and the current bus is departing at 18:00" do
+            with_time_set_to @time do
               current_bus_for_samobor.
                 time.strftime("%H:%M").
                 must_equal "18:00"
             end
           end
 
-          it "and the last bus is departing at 18:25" do
-            with_time_set_to "17:59 24-3-2014" do
+          it "and the next bus is departing at 18:25" do
+            with_time_set_to @time do
               next_bus_for_samobor.
                 time.strftime("%H:%M").
                 must_equal "18:25"
