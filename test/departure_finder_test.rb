@@ -33,7 +33,7 @@ describe "zimski" do
           before do 
             @date = "13:00 24-3-2014"
           end
-          it "returns 3 buses" do
+          it "returns 5 buses" do
             with_time_set_to @date do
               find_departures_for_zagreb.count.must_equal 5
             end
@@ -68,7 +68,7 @@ describe "zimski" do
           before do 
             @date = "11:30 24-3-2014"
           end
-          it "returns 3 buses" do
+          it "returns 5 buses" do
             with_time_set_to @date do
               find_departures_for_zagreb.count.must_equal 5
             end
@@ -141,7 +141,7 @@ describe "zimski" do
 
       describe "and it is Monday, 24-3-2014" do
         describe "and the time is 18:00" do
-          it "returns 3 buses" do
+          it "returns 5 buses" do
             with_time_set_to "18:00 24-3-2014" do
               find_departures_for_samobor.count.must_equal 5
             end

@@ -24,13 +24,14 @@ class DepartureFinder
       is_return: @is_return
     }
 
-    departures = Departure.desc(:time_in_seconds).where(args.merge({
-      :time_in_seconds.lt => minutes_since_midnight_in_seconds
-    })).limit(2).reverse + Departure.asc(:time_in_seconds).where(args.merge({
-      :time_in_seconds.gte => minutes_since_midnight_in_seconds
-    })).limit(3)
-
-    departures
+    {
+      past: Departure.desc(:time_in_seconds).where(args.merge({
+            :time_in_seconds.lt => minutes_since_midnight_in_seconds
+            })).limit(2).reverse,
+      future: Departure.asc(:time_in_seconds).where(args.merge({
+              :time_in_seconds.gte => minutes_since_midnight_in_seconds
+              })).limit(3),
+    }
   end
 
   private
