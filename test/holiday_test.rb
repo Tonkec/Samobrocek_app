@@ -11,7 +11,7 @@ describe "holiday support" do
 
         it "sets day type to 'Sunday'" do
           with_time_set_to @date do
-            find_departures_for_zagreb.last.day_type.must_equal DayType.sunday
+            find_departures_for_zagreb[:future].last.day_type.must_equal DayType.sunday
           end
         end
       end

@@ -2,27 +2,27 @@ require "./test/helper"
 require "./lib/departure_finder"
 
 def previous_bus_for_zagreb
-  find_departures_for_zagreb[1]
+  find_departures_for_zagreb[:past][1]
 end
 
 def current_bus_for_zagreb
-  find_departures_for_zagreb[2]
+  find_departures_for_zagreb[:future][0]
 end
 
 def next_bus_for_zagreb
-  find_departures_for_zagreb[3]
+  find_departures_for_zagreb[:future][1]
 end
 
 def previous_bus_for_samobor
-  find_departures_for_samobor[1]
+  find_departures_for_samobor[:past][1]
 end
 
 def current_bus_for_samobor
-  find_departures_for_samobor[2]
+  find_departures_for_samobor[:future][0]
 end
 
 def next_bus_for_samobor
-  find_departures_for_samobor[3]
+  find_departures_for_samobor[:future][1]
 end
 
 describe "zimski" do
@@ -35,7 +35,7 @@ describe "zimski" do
           end
           it "returns 5 buses" do
             with_time_set_to @date do
-              find_departures_for_zagreb.count.must_equal 5
+              find_departures_for_zagreb.values.flatten.count.must_equal 5
             end
           end
 
@@ -70,7 +70,7 @@ describe "zimski" do
           end
           it "returns 5 buses" do
             with_time_set_to @date do
-              find_departures_for_zagreb.count.must_equal 5
+              find_departures_for_zagreb.values.flatten.count.must_equal 5
             end
           end
 
@@ -100,10 +100,7 @@ describe "zimski" do
 
           it "and the next bus is 'Tour de Novaki'" do
             with_time_set_to @date do
-              bus = find_departures_for_zagreb.
-                last
-
-              bus.route_type.must_equal RouteType.novaki
+              next_bus_for_zagreb.route_type.must_equal RouteType.novaki
             end
           end
         end
@@ -119,7 +116,7 @@ describe "zimski" do
 
           it "returns only previous buses" do
             with_time_set_to @time do
-              find_departures_for_samobor.map {|departure| departure.time.strftime("%H:%M") }.
+              find_departures_for_samobor.values.flatten.map {|departure| departure.time.strftime("%H:%M") }.
                 must_equal ["23:05", "23:45"]
             end
           end
@@ -132,7 +129,7 @@ describe "zimski" do
 
           it "returns only future buses" do
             with_time_set_to @time do
-              find_departures_for_samobor.map {|departure| departure.time.strftime("%H:%M") }.
+              find_departures_for_samobor.values.flatten.map {|departure| departure.time.strftime("%H:%M") }.
                 must_equal ["05:00", "05:40", "06:00"]
             end
           end
@@ -143,7 +140,7 @@ describe "zimski" do
         describe "and the time is 18:00" do
           it "returns 5 buses" do
             with_time_set_to "18:00 24-3-2014" do
-              find_departures_for_samobor.count.must_equal 5
+              find_departures_for_samobor.values.flatten.count.must_equal 5
             end
           end
 
