@@ -1,5 +1,5 @@
 require "./test/helper"
-require "./departure_finder"
+require "./lib/departure_finder"
 
 def previous_bus_for_zagreb
   find_departures_for_zagreb[1]

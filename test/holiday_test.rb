@@ -1,5 +1,5 @@
 require "./test/helper"
-require "./departure_finder"
+require "./lib/departure_finder"
 
 describe "holiday support" do
   describe "bus finder" do

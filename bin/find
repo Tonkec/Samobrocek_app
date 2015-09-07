@@ -1,5 +1,5 @@
 #! /usr/bin/env ruby
-require "./departure_finder"
+require "./lib/departure_finder"
 
 puts "za #{ARGV[0] == "--return" ? "samobor" : "zagreb"}:"
 DepartureFinder.execute(ARGV[0]).each do |dep|
