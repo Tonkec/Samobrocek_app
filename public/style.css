@@ -2,7 +2,8 @@ header {
   position: fixed; }
 
 body {
-  background-image: url("/gplaypattern.png"); }
+  background-image: url("/gplaypattern.png");
+  height: 100%; }
 
 main {
   margin-top: 56px; }
@@ -76,7 +77,11 @@ main {
   margin-top: 30px;
   margin-bottom: 30px; }
 
+main {
+  margin-bottom: 50px; }
+
 footer {
+  position: absolute;
   z-index: 2;
   left: 0px;
   bottom: 0px;

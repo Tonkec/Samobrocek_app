@@ -9,6 +9,7 @@ header {
 
 body {
   background-image: url('/gplaypattern.png');
+  height: 100%;
 }
 
 main {
@@ -106,9 +107,11 @@ main {
 }
 
 main {
+  margin-bottom: 50px;
 }
 
 footer {
+  position: absolute;
   z-index: 2;
   left:0px;
   bottom:0px;
