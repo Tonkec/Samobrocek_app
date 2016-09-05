@@ -22,7 +22,7 @@ class Nokogiri::XML::Element
   end
 end
 
-SEASONS = %w.ljetni zimski.
+SEASONS = %w.ljetni zimski jesenski.
 
 class FetchData
   def self.execute(season, verbose = false)

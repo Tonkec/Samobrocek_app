@@ -16,6 +16,10 @@ class DepartureExtractor
         next_element.
         css("td")
 
+    when 'jesenski'
+      @parent.
+        next_element.
+        css("td")
     when 'ljetni'
       @parent.
         next_element.

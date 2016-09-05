@@ -40,7 +40,7 @@ namespace :db do
 
     desc "Fetches winter departures"
     task :winter => [:drop] do
-      exec "./bin/fetch zimski"
+      exec "./bin/fetch jesenski"
     end
   end
 end
